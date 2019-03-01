@@ -27,7 +27,7 @@ class Com extends Component {
           {this.props.bannerList.map(val => (
             <a
               key={val._id}
-              href="http://39.98.41.185"
+              href="http://39.98.41.185/mi"
               style={{ display: 'inline-block', width: '100%', height: 'auto' }}
             >
               <img
