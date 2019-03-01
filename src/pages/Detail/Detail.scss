@@ -1,0 +1,62 @@
+@import '@/qunar/reset.scss';
+.content {
+    .detailBox {
+        @include flex();
+        @include rect(100%, auto);
+        @include flexbox();
+        @include flex-direction(column);
+        img {
+            @include rect(100%, auto);
+        }
+        p.title {}
+        p.oriPrice {
+            span {
+                @include font-size(0.16rem);
+                @include text-color(#666);
+                text-decoration: line-through;
+            }
+        }
+        p.salePrice {
+            span {
+                @include font-size(0.18rem);
+                @include font-weight();
+                @include text-color(#f00);
+            }
+        }
+    }
+    .detailFooter {
+        @include rect(100%, 0.5rem);
+        @include flexbox();
+        @include justify-content(space-between);
+        @include align-items();
+        div.detailCart {
+            @include rect(0.45rem, 0.5rem);
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items();
+            @include justify-content();
+            @include background-color(#fff);
+            img {
+                @include rect(0.2rem, 0.2rem);
+            }
+            p {
+                @include text-align();
+            }
+        }
+        .btncommon {
+            @include rect(auto, 100%);
+            @include text-color(#fff);
+            @include text-align();
+            // @include font-weight();
+            @include line-height(0.5rem);
+            @include font-size(0.18rem);
+            @include flex();
+        }
+        .addCart {
+            @include background-color(#FF9600);
+        }
+        .fastBuy {
+            @include background-color(#E4393C);
+        }
+    }
+}
