@@ -135,9 +135,9 @@ class Com extends Component {
             <div className='btn1'>
               <Button type="" onClick={this.goCode.bind(this)}>手机短信登录/注册</Button>
             </div>
-            <div className=''>
-              <div className=''>
-                <a href=''></a>
+            <div className='register'>
+              <div className='register_1'>
+                <span>立即注册</span>|<span>忘记密码</span>
               </div>
             </div>
             </div>
