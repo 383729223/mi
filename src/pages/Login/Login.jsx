@@ -135,7 +135,11 @@ class Com extends Component {
             <div className='btn1'>
               <Button type="" onClick={this.goCode.bind(this)}>手机短信登录/注册</Button>
             </div>
-            <div></div>
+            <div className=''>
+              <div className=''>
+                <a href=''></a>
+              </div>
+            </div>
             </div>
             <div className='mid_b'>
               <fieldset className="oth_type_tit">
