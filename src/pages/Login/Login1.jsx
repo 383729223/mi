@@ -1,96 +1,38 @@
 import React, { Component } from 'react'
 // import { List, InputItem, Toast } from 'antd-mobile';
 import { WingBlank, InputItem, Toast, Button } from 'antd-mobile';
-import action from '@/store/login/action'
-import store from '@/store'
+// import action from '@/store/login/action'
+// import store from '@/store/login/store'
 import './Login'
 class Com extends Component {
   state = {
     hasError: false,
-    hasPasswordError: false,
-    phone: '',
-    password: '',
+    value: '',
   }
   onErrorClick = () => {
     if (this.state.hasError) {
-      Toast.info('请输入正确格式的手机号');
+      Toast.info('Please enter 11 digits');
     }
   }
-  onPasswordErrorClick = () => {
-    if (this.state.hasPasswordError) {
-      Toast.info('密码格式不正确');
-    }
-  }
-  goCode () {
-    this.props.history.push('/registerapp/login1')
-    console.log(this)
+  goLogin () {
+    this.props.history.push('/registerapp/login')
   }
   onChange = (value) => {
     if (value.replace(/\s/g, '').length < 11) {
-      if(value.replace(/\s/g, '').length === 0){
-        this.setState({
-          hasError: false,
-        });
-      } else {
-        this.setState({
-          hasError: true,
-        });
-      }
+      this.setState({
+        hasError: true,
+      });
     } else {
       this.setState({
         hasError: false,
       });
     }
     this.setState({
-      phone: value
+      value,
     });
-    console.log(this.state.phone)
-  }
-  onPasswordChange = (value) => {
-    if (value.replace(/\s/g, '').length < 6) {
-      if(value.replace(/\s/g, '').length === 0){
-        this.setState({
-          hasPasswordError: false,
-        });
-      } else {
-        this.setState({
-          hasPasswordError: true,
-        });
-      }
-    } else {
-      this.setState({
-        hasPasswordError: false,
-      });
-    }
-    this.setState({
-      password: value
-    });
-    console.log(this.state.password)
-  }
-  loginCheck () {
-    console.log(this.state.phone, this.state.password)
-    store.dispatch(action.loginCheck(this.state.phone, this.state.password)).then(data => {
-      if (data === 0){
-        Toast.fail('用户已注册', 0.5)
-      } else if(data === 1) {
-        Toast.success('登录成功',0.5)
-      } else {
-        Toast.fail('登录失败', 0.5)
-      }
-      console.log(data)
-    })
-    // let timer = setTimeout(() => {
-
-    //   clearTimeout(timer)
-    // }, 1000)
-    // console.log(store.getState().loginStore)
-    // action.loginCheck(this.state.phone, this.state.password).then(data => {
-    // })
   }
   componentDidMount () {
-    console.log(store)
-    // store.dispatch(action.loginCheck(this.state.phone, this.state.password))
-    
+
   }
   render () {
     return (
@@ -106,39 +48,29 @@ class Com extends Component {
             <div className='mid_t'>
               <InputItem
               type="phone"
-              placeholder="邮箱/手机号/小米ID"
+              placeholder="手机号码"
               error={this.state.hasError}
               onErrorClick={this.onErrorClick}
               onChange={this.onChange}
-              value={this.state.phone}
-            ></InputItem>
-            <div className='password'>
+              value={this.state.value}
+            >+86&nbsp;&nbsp;></InputItem>
+            <div className='mscode'>
               <InputItem
                 className='yanzhengma'
-                type="password"
-                placeholder="密码"
-                error={this.state.hasPasswordError}
-                onErrorClick={this.onPasswordErrorClick}
-                onChange={this.onPasswordChange}
-                value={this.state.password}
+                type="phone"
+                placeholder="短信验证码"
+                error={this.state.hasError}
+                onErrorClick={this.onErrorClick}
+                onChange={this.onChange}
+                value={this.state.value}
               ></InputItem>
-              <span className='sendcode'>
-                <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <path className="eye_outer" d="M0 8 C6 0,14 0,20 8, 14 16,6 16, 0 8 z"></path>
-                  <circle className="eye_inner" cx="10" cy="8" r="3"></circle>
-                </svg>
-              </span>
+              <span className='sendcode'>获取验证码</span>
             </div>
             <div className='btn'>
-              <Button type="" onClick={this.loginCheck.bind(this)}>登录</Button>
+              <Button type="">立即登录/注册</Button>
             </div>
             <div className='btn1'>
-              <Button type="" onClick={this.goCode.bind(this)}>手机短信登录/注册</Button>
-            </div>
-            <div className='register'>
-              <div className='register_1'>
-                <span>立即注册</span>|<span>忘记密码</span>
-              </div>
+              <Button type="" onClick={this.goLogin.bind(this)}>用户名密码登录</Button>
             </div>
             </div>
             <div className='mid_b'>
