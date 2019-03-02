@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './ListStyle.scss'
-import { Button } from 'antd-mobile';
 
 
 let lists = ({list}) => {
@@ -19,7 +18,7 @@ let lists = ({list}) => {
               <p className="listPrice">
               ¥<b>{item.discount_price}</b>起&nbsp;<span>¥{item.original_price}</span>
               </p>
-              <Button type="primary" size="small" className="buyBtn" inline>立即购买</Button>
+              <button className="buyBtn">立即购买</button>
             </Link>
           )
           return ''
