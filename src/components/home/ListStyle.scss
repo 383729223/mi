@@ -1,0 +1,48 @@
+@import '@/qunar/reset.scss';
+.listBox {
+    @include flexbox();
+    @include justify-content();
+    @include align-items();
+    @include flex-wrap(wrap);
+    // @include padding(0 0.04rem 0 0.04rem);
+    a.listItem {
+        @include margin(0.06rem);
+        @include padding(0 0 0.1rem 0);
+        @include rect(46%, auto);
+        @include flexbox();
+        @include justify-content();
+        @include align-items();
+        @include flex-direction(column);
+        @include background-color(#fff);
+        img {
+            @include rect(100%, 100%);
+        }
+        p {
+            @include text-align();
+            @include ellipsis(80%, 1);
+        }
+        p.listTitle {
+            @include font-size(.16rem);
+            @include text-color(#000);
+        }
+        p.listDir {
+            @include text-color(#999);
+        }
+        p.listPrice {
+            @include text-color(#ea625b);
+            span {
+                @include text-color(#999);
+                text-decoration: line-through;
+            }
+        }
+        .buyBtn {
+            @include background-color(#EA625B);
+            @include rect(50%, .3rem);
+            @include border-radius(.05rem);
+            @include text-color(#fff);
+            @include font-weight();
+            outline: 0;
+            border: 0;
+        }
+    }
+}

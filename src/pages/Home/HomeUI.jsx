@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Lists from '@/components/home/Lists'
-import { Carousel } from 'antd-mobile';
+import ShowList from '@/components/home/ShowList.js'
+import Lists from '@/components/home/Lists.js'
+import Banner from '@/components/home/Banner.js'
+import { Tabs } from 'antd-mobile';
 // import store from '@/store'
 // import action from '@/store/home/action'
 
@@ -16,33 +18,34 @@ class Com extends Component {
   }
   render () {
     // console.log(this.props.bannerList)
+    const tabs = [
+      { title: '推荐' },
+      { title: '手机' },
+      { title: '智能' },
+    ];
     return (
       <div className = "content">
-        <Carousel
-          autoplay={true}
-          infinite={true}
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => console.log('slide to', index)}
+        <Tabs tabs={tabs}
+            initalPage={'t2'}
+            swipeable={false}
+            tabBarActiveTextColor={'#ed5b00'}
+            tabBarUnderlineStyle={'#ed5b00'}
+            tabBarBackgroundColor={'#F2F2F2'}
+            // tabBarUnderlineStyle={{backgroundColor:'#F2F2F2'}}
         >
-          {this.props.bannerList.map(val => (
-            <a
-              key={val._id}
-              href="http://39.98.41.185"
-              style={{ display: 'inline-block', width: '100%', height: 'auto' }}
-            >
-              <img
-                src={val.imgSrc}
-                alt=""
-                style={{ width: '100%', verticalAlign: 'top' }}
-                onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                }}
-              />
-            </a>
-          ))}
-        </Carousel>
-        <Lists list={this.props.lists} />
+            <div>
+              <Banner banner={this.props.bannerList} />
+              <ShowList list={this.props.lists} />
+            </div>
+            <div>
+              <Banner banner={this.props.bannerList} />
+              <Lists list={this.props.lists} />
+            </div>
+            <div>
+              <Banner banner={this.props.bannerList} />
+              <Lists list={this.props.lists} />
+            </div>
+        </Tabs>
       </div>
     )
   }
