@@ -87,6 +87,12 @@ class Com extends Component {
     // action.loginCheck(this.state.phone, this.state.password).then(data => {
     // })
   }
+  goRegister () {
+    this.props.history.push('/registerapp/register')
+  }
+  goHome () {
+    this.props.history.push('/home')
+  }
   componentDidMount () {
     console.log(store)
     // store.dispatch(action.loginCheck(this.state.phone, this.state.password))
@@ -99,7 +105,7 @@ class Com extends Component {
           <WingBlank>
             <div className='top'>
               <div className='logo'>
-                <img src="./logo.png" alt="a"/>
+                <img src="./logo.png" onClick={this.goHome.bind(this)} alt="a"/>
                 <span>小米账号登录</span>
               </div>
             </div>
@@ -137,7 +143,7 @@ class Com extends Component {
             </div>
             <div className='register'>
               <div className='register_1'>
-                <span>立即注册</span>|<span>忘记密码</span>
+                <span onClick={this.goRegister.bind(this)}>立即注册</span>|<span>忘记密码?</span>
               </div>
             </div>
             </div>

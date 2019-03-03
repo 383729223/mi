@@ -1,1 +1,206 @@
 @import '@/qunar/reset.scss';
+.content{
+  .registerBox{
+    @include rect(100%, 100%);
+    @include background-color(#fff);
+    @include flexbox();
+    @include flex-direction(column);
+    .am-wingblank{
+      @include padding(0 .05rem);
+      .top{
+        @include rect(100%, auto);
+        @include font-size(.2rem);
+        .logo{
+          @include rect(100%, auto);
+          @include padding(.35rem 0 .2rem);
+          @include flexbox();
+          @include flex-direction(column);
+          @include justify-content(center);
+          @include align-items(center);
+          span{
+            @include font-size(.2rem);
+            @include color(#000)
+          }
+        }
+      }
+      .mid_t{
+        .am-list-item{
+          @include border(0 0 1px 0, #d3d3d3, solid);
+          @include padding(0 0 0 .1rem);
+          @include rect(100%, .53rem);
+          @include font-size(.18rem);
+          .am-list-line{
+            
+            .am-input-label{
+              @include font-size(.18rem);
+              @include text-color(#9b9b9b);
+              @include rect(.56rem, auto);
+              @include padding(.02rem 0 0 0);
+              .iconfont{
+                @include font-size(.22rem);
+                @include color(#FF6700)
+              }
+            }
+            .am-input-control{
+              input{
+                @include font-size(.18rem);
+              }
+            }
+          }
+        }
+        .mscode{
+          @include font-size(.18rem);
+          @include rect(100%, auto);
+          @include border(0 0 1px 0, #d3d3d3, solid);
+          @include flexbox();
+          @include justify-content(space-around);
+          @include align-items(center);
+          .yanzhengma{
+            @include rect(2.25rem, .53rem);
+            @include padding(0);
+          }
+          .sendcode{
+            @include text-color(#2ea5e5);
+            @include font-size(.14rem);
+          }
+        }
+        .password{
+          @include font-size(.18rem);
+          @include rect(100%, auto);
+          @include border(0 0 1px 0, #d3d3d3, solid);
+          @include flexbox();
+          @include justify-content(space-around);
+          @include align-items(center);
+          .yanzhengma{
+            @include rect(3.15rem, .53rem);
+            @include padding(0);
+          }
+          .sendcode{
+            @include rect(.2rem, .16rem);
+            @include text-color(#2ea5e5);
+            @include font-size(.14rem);
+            svg{
+              .eye_outer{
+                fill: #4d4d4d;
+              }
+              .eye_inner{
+                fill: #4d4d4d;
+                stroke: #fff;
+                stroke-width: 2;
+                stroke-opacity: .8;
+              }
+            }
+          }
+        }
+        .btn{
+          @include margin(.3rem 0 0 0);
+          .am-button{
+            @include background-color(#ff6700);
+            @include text-color(#fff);
+            @include rect(100%, .44rem)
+          }
+        }
+        .btn1{
+          @include margin(.24rem 0 0 0);
+          .am-button{
+            // @include background-color(#ff6700);
+            // @include text-color(#fff);
+            @include rect(100%, .44rem)
+          }
+        }
+        .register{
+          @include rect(100%, auto);
+          @include padding(.15rem 0);
+          .register_1{
+            @include rect(100%, auto);
+            @include text-align(center);
+            span{
+              @include color(#9b9b9b);
+              @include padding(0 .09rem);
+              @include font-size(.16rem);
+            }
+          }
+        }
+      }
+      .mid_b{
+        @include padding(23px 0 0 0);
+        @include text-align(center);
+        .oth_type_tit{
+          // @include border(1px 0 0 0, #000, solid) ;
+          @include padding(10px 0 0 0);
+          border-top: 1px #f2f2f2 solid;
+          .oth_type_txt{
+            @include font-size(.12rem);
+            @include color(#b0b0b0);
+            @include rect(.8rem, auto);
+          }
+        }
+        .elselogin{
+          padding-top: 5px;
+          text-align: center;
+          a.weibo{
+            @include rect(.3rem, .3rem);
+            @include margin(0 .1rem);
+            background-color: #ed9090;
+            border-radius: 50%;
+            display: inline-block;
+            i{
+              @include rect(.18rem, .18rem);
+              @include margin(5px auto 0);
+              display: block;
+              background: url('https://account.xiaomi.com/static/res/166d6dc/account-static/respassport/acc-2014/img/icons_type.png') no-repeat;
+              background-position: -38px 0;
+            }
+          }
+          a.alipay{
+            @include rect(.3rem, .3rem);
+            @include margin(0 .1rem);
+            background-color: #6bb6ea;
+            border-radius: 50%;
+            display: inline-block;
+            i{
+              @include rect(.18rem, .18rem);
+              @include margin(5px auto 0);
+              display: block;
+              background: url('https://account.xiaomi.com/static/res/166d6dc/account-static/respassport/acc-2014/img/icons_type.png') no-repeat;
+              background-position: -57px 0;
+            }
+          }
+          a.weixin{
+            @include rect(.3rem, .3rem);
+            @include margin(0 .1rem);
+            background-color: #00be00;
+            border-radius: 50%;
+            display: inline-block;
+            i{
+              @include rect(.18rem, .18rem);
+              @include margin(5px auto 0);
+              display: block;
+              background: url('https://account.xiaomi.com/static/res/166d6dc/account-static/respassport/acc-2014/img/icons_type.png') no-repeat;
+              background-position: -84px 0;
+            }
+          }
+        }
+      }
+      .bottom{
+        @include padding(2.6rem 0 0  0);
+        .bottom_b{
+          ul{
+            @include flexbox();
+            @include justify-content(center);
+            li{
+              a{
+                @include text-color(#9b9b9b);
+                @include padding(0 .1rem);
+              }
+              .a1{
+                @include text-color(#4a4a4a);
+                @include padding(0 .1rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
