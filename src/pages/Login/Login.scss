@@ -67,6 +67,7 @@
           @include font-size(.18rem);
           @include rect(100%, auto);
           @include border(0 0 1px 0, #d3d3d3, solid);
+          @include padding(0 0 0 .1rem);
           @include flexbox();
           @include justify-content(space-around);
           @include align-items(center);
@@ -108,11 +109,21 @@
           }
         }
         .register{
-          
+          @include rect(100%, auto);
+          @include padding(.15rem 0);
+          .register_1{
+            @include rect(100%, auto);
+            @include text-align(center);
+            span{
+              @include color(#9b9b9b);
+              @include padding(0 .09rem);
+              @include font-size(.16rem);
+            }
+          }
         }
       }
       .mid_b{
-        @include padding(54px 0 0 0);
+        @include padding(23px 0 0 0);
         @include text-align(center);
         .oth_type_tit{
           // @include border(1px 0 0 0, #000, solid) ;
@@ -125,7 +136,7 @@
           }
         }
         .elselogin{
-          padding-top: 10px;
+          padding-top: 5px;
           text-align: center;
           a.weibo{
             @include rect(.3rem, .3rem);
@@ -172,7 +183,7 @@
         }
       }
       .bottom{
-        @include padding(.8rem 0 0  0);
+        @include padding(.6rem 0 0  0);
         .bottom_b{
           ul{
             @include flexbox();
