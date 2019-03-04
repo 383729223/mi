@@ -45,9 +45,8 @@ class Com extends Component {
       });
     }
     this.setState({
-      username: value
+      username: value.replace(/\s/g, '')
     });
-    console.log(this.state.phone)
   }
   onPhoneChange = (value) => {
     if (value.replace(/\s/g, '').length < 11) {
@@ -66,9 +65,8 @@ class Com extends Component {
       });
     }
     this.setState({
-      phone: value
+      phone: value.replace(/\s/g, '')
     });
-    console.log(this.state.phone)
   }
   onPasswordChange = (value) => {
     if (value.replace(/\s/g, '').length < 6) {
@@ -87,12 +85,10 @@ class Com extends Component {
       });
     }
     this.setState({
-      password: value
+      password: value.replace(/\s/g, '')
     });
-    console.log(this.state.password)
   }
   registerCheck () {
-    console.log(this.state.phone, this.state.password)
     if (this.state.phone.length !== 0 && this.state.password.length !==0 && this.state.username.length !==0){
       store.dispatch(action.registerCheck(this.state.phone,this.state.username, this.state.password)).then(data => {
         if (data === 0){
@@ -102,7 +98,6 @@ class Com extends Component {
         } else {
           Toast.fail('注册失败', 1)
         }
-        console.log(data)
       })
     } else {
       Toast.fail('请将信息填写完整', 1)

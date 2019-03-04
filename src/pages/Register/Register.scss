@@ -1,5 +1,6 @@
 @import '@/qunar/reset.scss';
 .content{
+  @include rect(100%, 100%);
   .registerBox{
     @include rect(100%, 100%);
     @include background-color(#fff);
@@ -183,7 +184,8 @@
         }
       }
       .bottom{
-        @include padding(2.6rem 0 0  0);
+        @include rect(100%, .2rem);
+        @include margin(1.6rem 0 0  0);
         .bottom_b{
           ul{
             @include flexbox();

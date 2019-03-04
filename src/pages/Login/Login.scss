@@ -1,5 +1,6 @@
 @import '@/qunar/reset.scss';
 .content{
+  @include rect(100%, 100%);
   .loginBox{
     @include rect(100%, 100%);
     @include background-color(#fff);
