@@ -70,12 +70,14 @@ class Com extends Component {
   loginCheck () {
     console.log(this.state.phone, this.state.password)
     store.dispatch(action.loginCheck(this.state.phone, this.state.password)).then(data => {
-      if (data === 0){
-        Toast.fail('用户已注册', 0.5)
-      } else if(data === 1) {
-        Toast.success('登录成功',0.5)
+      if(data === 1) {
+        Toast.success('登录成功', 1)
+        let timer = setTimeout(() => {
+          this.props.history.push('/home');
+          clearTimeout(timer)
+        }, 1000)
       } else {
-        Toast.fail('登录失败', 0.5)
+        Toast.fail('登录失败', 1)
       }
       console.log(data)
     })
