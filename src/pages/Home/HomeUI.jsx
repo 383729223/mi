@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ShowList from '@/components/home/ShowList.js'
 import Lists from '@/components/home/Lists.js'
 import Banner from '@/components/home/Banner.js'
@@ -10,7 +11,7 @@ class Com extends Component {
   
   componentDidMount(){
     // console.log(this.props)
-    this.props.requestData('/product')
+    this.props.requestData('/mi/product')
     this.props.requestBannerData('/mi/banner')
     // // console.log(action)
     //   store.dispatch(action.requestData('/product'))
@@ -33,7 +34,7 @@ class Com extends Component {
                 <SearchBar placeholder="搜索商品名称" ref={ref => this.autoFocusInst = ref} />
             </div>
             <div className="user">
-                <span className="iconfont icon-wode"></span>
+              <Link to="/user"><span className="iconfont icon-wode"></span></Link>
             </div>
         </header>
         <Tabs tabs={tabs}
@@ -45,15 +46,40 @@ class Com extends Component {
             className="content homeContent"
             // tabBarUnderlineStyle={{backgroundColor:'#F2F2F2'}}
         >
-            <div>
+            {/* 首页第一个tab */}
+            <div className="fristTab">
               <Banner banner={this.props.bannerList} />
+              <div className="homeNav">
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/01e0772b-fcd9-6e03-cdf3-9bd08b2d2974!144x152.webp" alt=""/></Link>
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/69f3581c-893a-c3a3-9f27-055146a62b7e!144x152.webp" alt=""/></Link>
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/9f3a3e88-3b55-f7c8-b863-5867e23022c1!144x152.webp" alt=""/></Link>
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/b338546a-bba6-eff5-0b4e-6bcb90c6230e!144x152.webp" alt=""/></Link>
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/b05bf09b-a0a7-ef8f-e5ba-500b1549938c!144x152.webp" alt=""/></Link>
+              </div>
+              <div className="imgBox1">
+                <div className="imgBox-left">
+                  <Link to="/home"><img src="//i8.mifile.cn/v1/a1/d9dfd514-d6d1-68c3-a818-6005752ef2b6!358x508.webp" alt=""/></Link>
+                </div>
+                <div className="imgBox-right">
+                  <Link to="/home"><img src="//i8.mifile.cn/v1/a1/19ad7255-7a7a-b94d-d0cb-e88288716dda!358x252.webp" alt=""/></Link>
+                  <Link to="/home"><img src="//i8.mifile.cn/v1/a1/b5413a0d-0c80-6f16-d5f6-cdc7c596921c!358x252.webp" alt=""/></Link>
+                </div>
+              </div>
+              <div className="imgBox2">
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/a510634a-1898-c67e-5b2b-b1904250074d!720x280.webp" alt=""/></Link>
+                <Link to="/home"><img src="//i8.mifile.cn/v1/a1/5df15531-f43d-4255-7e2b-006c7e19ef12!720x440.webp" alt=""/></Link>
+              </div>
               <ShowList list={this.props.lists} />
             </div>
-            <div>
+
+            {/* 首页第二个tab */}
+            <div className="secondTab">
               <Banner banner={this.props.bannerList} />
               <Lists list={this.props.lists} />
             </div>
-            <div>
+
+            {/* 首页第三个tab */}
+            <div className="threeTab">
               <Banner banner={this.props.bannerList} />
               <Lists list={this.props.lists} />
             </div>

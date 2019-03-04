@@ -1,62 +1,111 @@
 @import '@/qunar/reset.scss';
-.content {
+.detailHeader {
+    @include rect(100%, 0.5rem);
+    @include flexbox();
+    @include justify-content(space-between);
+    @include align-items();
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    i {
+        @include rect(0.35rem, 0.35rem) @include background-color(#5C5B66);
+        @include border-radius(50%);
+        @include text-color(#FAFAFA);
+        @include line-height(0.35rem);
+        @include text-align();
+        @include font-size(0.25rem);
+    }
+    i.icon-fanhui {
+        @include margin(0 0 0 0.1rem);
+    }
+    i.icon-lianjie {
+        @include margin(0 0.1rem 0 0);
+    }
+}
+
+.detailContent {
+    @include overflow(auto);
+    // position: relative;
     .detailBox {
         @include flex();
         @include rect(100%, auto);
         @include flexbox();
         @include flex-direction(column);
+        @include background-color(#fff);
         img {
             @include rect(100%, auto);
         }
-        p.title {}
-        p.oriPrice {
+        p.title {
+            @include padding(0.2rem 0.2rem 0 0.2rem);
+            @include font-size(0.22rem);
+            // @include font-weight();
+            @include text-color(#333);
+        }
+        p.dir {
+            @include padding(0 0.2rem 0 0.2rem);
+            @include text-color(#666);
             span {
-                @include font-size(0.16rem);
-                @include text-color(#666);
-                text-decoration: line-through;
+                @include text-color(#ff4a00);
             }
         }
-        p.salePrice {
-            span {
-                @include font-size(0.18rem);
-                @include font-weight();
-                @include text-color(#f00);
+        p.price {
+            @include padding(0 0.2rem 0 0.2rem);
+            @include text-color(#ff6700);
+            @include font-size(0.28rem);
+        }
+        div.detailImg {
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items();
+            img {
+                @include rect(100%, auto);
             }
         }
     }
     .detailFooter {
-        @include rect(100%, 0.5rem);
+        position: fixed;
+        bottom: 0.2rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        @include overflow(hidden);
+        @include border-radius(0.1rem);
+        @include rect(90%, 0.6rem);
         @include flexbox();
         @include justify-content(space-between);
         @include align-items();
-        div.detailCart {
-            @include rect(0.45rem, 0.5rem);
+        @include background-color(#fff);
+        div.detailFooterLeft {
             @include flexbox();
-            @include flex-direction(column);
             @include align-items();
-            @include justify-content();
-            @include background-color(#fff);
-            img {
-                @include rect(0.2rem, 0.2rem);
+            a.detailCart {
+                @include margin(0 0.1rem 0 0.1rem);
+                @include rect(0.45rem, 0.6rem);
+                @include flexbox();
+                @include flex-direction(column);
+                @include align-items();
+                @include justify-content();
+                @include background-color(#fff);
+                @include text-color(#666);
+                span {
+                    @include font-size(0.2rem);
+                }
+                p {
+                    @include text-align();
+                }
             }
-            p {
-                @include text-align();
-            }
-        }
-        .btncommon {
-            @include rect(auto, 100%);
-            @include text-color(#fff);
-            @include text-align();
-            // @include font-weight();
-            @include line-height(0.5rem);
-            @include font-size(0.18rem);
-            @include flex();
         }
         .addCart {
-            @include background-color(#FF9600);
-        }
-        .fastBuy {
-            @include background-color(#E4393C);
+            @include margin(0 0.2rem 0 0);
+            @include border-radius(0.2rem);
+            @include rect(40%, 0.4rem);
+            @include text-color(#fff);
+            @include text-align();
+            @include line-height(0.4rem);
+            @include font-size(0.17rem);
+            // @include flex();
+            @include background-color(#FF6700);
         }
     }
 }

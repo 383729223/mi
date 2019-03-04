@@ -26,10 +26,67 @@
             @include flexbox();
             @include align-items();
             @include justify-content();
-            span {
-                @include font-size(0.26rem);
+            a {
+                @include text-color(#666);
+                span {
+                    @include font-size(0.26rem);
+                }
             }
         }
     }
-    .content {}
+    .fristTab {
+        .homeNav {
+            @include flexbox();
+            @include justify-content(space-between);
+            @include rect(100%, auto);
+            a {
+                @include flex();
+                @include rect(auto, 100%);
+                img {
+                    @include rect(100%, auto);
+                }
+            }
+        }
+        .imgBox1 {
+            @include margin(0.06rem 0 0.06rem 0);
+            @include flexbox();
+            @include justify-content(space-between);
+            @include rect(100%, auto);
+            div.imgBox-left {
+                @include rect(100%, auto);
+                @include flex();
+                a {
+                    @include rect(100%, auto);
+                    img {
+                        @include rect(100%, auto);
+                    }
+                }
+            }
+            div.imgBox-right {
+                @include flex();
+                @include rect(100%, auto);
+                @include flexbox();
+                @include flex-direction(column);
+                a {
+                    @include flex();
+                    @include rect(100%, auto);
+                    img {
+                        @include rect(100%, auto);
+                    }
+                }
+            }
+        }
+        .imgBox2 {
+            @include flexbox();
+            @include flex-direction(column);
+            @include rect(100%, auto);
+            a {
+                img {
+                    @include rect(100%, auto);
+                }
+            }
+        }
+    }
+    .secondTab {}
+    .threeTab {}
 }
