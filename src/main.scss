@@ -9,44 +9,21 @@ body,
 .app {
     @include flexbox();
     @include flex-direction(column);
-    .header {
-        @include rect(100%, 0.48rem);
-        @include padding(0.04rem 0 0.04rem 0);
-        @include background-color(#F2F2F2);
-        @include color(#666);
-        @include flexbox();
-        @include align-items();
-        @include justify-content(space-between);
-        .logo {
-            @include rect(0.6rem, 100%);
-            @include flexbox();
-            @include align-items();
-            @include justify-content();
-            img {
-                @include rect(auto, 50%);
-            }
-        }
-        .search {
-            @include rect(0.6rem, 100%);
-            @include flex();
-        }
-        .user {
-            @include rect(0.6rem, 100%);
-            @include flexbox();
-            @include align-items();
-            @include justify-content();
-            span {
-                @include font-size(0.26rem);
-            }
-        }
-    }
-    .content {
-        @include overflow();
+    .container {
         @include flex();
         @include rect(100%, auto);
-        @include background-color(#F5F5F5);
-        @include flexbox();
-        @include flex-direction(column);
+        @include overflow();
+        .header {
+            @include rect(100%, 0.48rem);
+            @include background-color(#F2F2F2);
+        }
+        .content {
+            @include flex();
+            @include rect(100%, auto);
+            @include background-color(#F5F5F5);
+            @include flexbox();
+            @include flex-direction(column);
+        }
     }
     .footer {
         @include rect(100%, 0.5rem);

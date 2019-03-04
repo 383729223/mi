@@ -9,12 +9,12 @@ class Com extends Component {
 
   render () {
     return (
-      <div className = "content">
-        用户中心
-        <Link to="/registerapp/register">注册</Link>
-        <Link to="/registerapp/login">登录</Link>
-        {/* <button onClick={ this.goPageFn.bind(this, 'register')}>注册</button>
-        <button onClick={ this.goPageFn.bind(this, 'login')}>登录</button> */}
+      <div className = "container">
+        <header className="header kindHeader">用户中心头部</header>
+        <div className="content kindContent">
+          <Link to="/registerapp/register">注册</Link>
+          <Link to="/registerapp/login">登录</Link>
+        </div>
       </div>
     )
   }
