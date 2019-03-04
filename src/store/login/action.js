@@ -3,14 +3,12 @@ import api from '@/api/login'
 const loginCheck = (tel, password) => (dispatch, getState) => {
   return new Promise((resolve, reject) => {
     api.loginCheck('/mi/users/search', {tel, password}).then(data => {
-        console.log(data)
         dispatch({ type: 'LOGIN_CHECK', data: data.data.data })
         // let timer = setTimeout(() => {
 
         resolve(data.data.data)
           // clearTimeout(timer)
         // }, 1000)
-        console.log(data.data.data)
     })
   })
 }
