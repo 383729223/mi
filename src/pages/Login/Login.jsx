@@ -23,7 +23,6 @@ class Com extends Component {
   }
   goCode () {
     this.props.history.push('/registerapp/login1')
-    console.log(this)
   }
   onChange = (value) => {
     if (value.replace(/\s/g, '').length < 11) {
@@ -42,9 +41,8 @@ class Com extends Component {
       });
     }
     this.setState({
-      phone: value
+      phone: value.replace(/\s/g, '')
     });
-    console.log(this.state.phone)
   }
   onPasswordChange = (value) => {
     if (value.replace(/\s/g, '').length < 6) {
@@ -63,12 +61,10 @@ class Com extends Component {
       });
     }
     this.setState({
-      password: value
+      password: value.replace(/\s/g, '')
     });
-    console.log(this.state.password)
   }
   loginCheck () {
-    console.log(this.state.phone, this.state.password)
     store.dispatch(action.loginCheck(this.state.phone, this.state.password)).then(data => {
       if(data === 1) {
         Toast.success('登录成功', 1)
@@ -79,15 +75,7 @@ class Com extends Component {
       } else {
         Toast.fail('登录失败', 1)
       }
-      console.log(data)
     })
-    // let timer = setTimeout(() => {
-
-    //   clearTimeout(timer)
-    // }, 1000)
-    // console.log(store.getState().loginStore)
-    // action.loginCheck(this.state.phone, this.state.password).then(data => {
-    // })
   }
   goRegister () {
     this.props.history.push('/registerapp/register')
@@ -96,7 +84,6 @@ class Com extends Component {
     this.props.history.push('/home')
   }
   componentDidMount () {
-    console.log(store)
     // store.dispatch(action.loginCheck(this.state.phone, this.state.password))
     
   }
@@ -107,7 +94,7 @@ class Com extends Component {
           <WingBlank>
             <div className='top'>
               <div className='logo'>
-                <img src="./logo.png" onClick={this.goHome.bind(this)} alt="a"/>
+                <img src="https://account.xiaomi.com/static/res/11eb7d1/account-static/respassport/acc-2014/img/2018/milogo@2x.png" onClick={this.goHome.bind(this)} alt="a"/>
                 <span>小米账号登录</span>
               </div>
             </div>
