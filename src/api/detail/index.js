@@ -6,6 +6,7 @@ const api = {
         return new Promise((resolve, reject) => {
             axios.get(baseUrl + url)
                 .then((data) => {
+                    // console.log(data)
                     resolve(data.data.data)
                 })
                 .catch((error) => {

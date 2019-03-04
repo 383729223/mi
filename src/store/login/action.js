@@ -10,7 +10,6 @@ const loginCheck = (tel, password) => (dispatch, getState) => {
           // clearTimeout(timer)
         // }, 1000)
     })
-  })
 }
 
 

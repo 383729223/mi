@@ -1,5 +1,6 @@
 import api from '@/api/login'
 // import axios from 'axios'
+
 const registerCheck = (tel,username, password) => (dispatch, getState) => {
   return new Promise((resolve, reject) => {
     api.loginCheck('/mi/users/addAction', {tel, username, password}).then(data => {
@@ -10,7 +11,6 @@ const registerCheck = (tel,username, password) => (dispatch, getState) => {
           // clearTimeout(timer)
         // }, 1000)
     })
-  })
 }
 
 

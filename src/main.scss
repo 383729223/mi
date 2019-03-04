@@ -26,7 +26,7 @@ body,
         }
     }
     .footer {
-        @include rect(100%, 0.5rem);
+        @include rect(100%, 0.55rem);
         @include background-color(#fff);
         @include color(#666);
         ul {
