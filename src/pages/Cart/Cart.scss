@@ -1,1 +1,10 @@
 @import '@/qunar/reset.scss';
+.container {
+    header.cartHeader {
+        .am-navbar-title {
+            @include text-color(#666);
+            @include font-size(0.17rem);
+        }
+    }
+    .cartContent {}
+}
