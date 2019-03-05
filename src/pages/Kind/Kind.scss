@@ -1,1 +1,56 @@
 @import '@/qunar/reset.scss';
+.kindHeader{
+  // @include rect(100%, .48rem);
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 99999;
+  .am-navbar{
+    @include rect(100%, .48rem);
+    @include background-color(#F2F2F2);
+    @include text-color(#666);
+    .am-navbar-title{
+      @include text-color(#666);
+      @include font-size(.15rem);
+      
+    }
+    .am-navbar-left{
+      .am-icon{
+        // @include rect(.22rem, .33rem);
+      }
+    }
+  }
+}
+div.kindContent.content#kindId{
+  @include padding(.54rem 0 0 0);
+  @include rect(100%, 100%)
+  .kindList{
+    @include rect(100%, 100%)
+    .am-whitespace.am-whitespace-md{
+      @include rect(0, 0);
+    }
+    .am-tabs{
+      // @include rect(100%, 5.5rem);
+      .am-tabs-default-bar{
+        .am-tabs-default-bar-content{
+          @include rect(.594rem,auto)
+          // @include rect(.594rem, 5.5rem)
+          .am-tabs-tab-bar-wrap{
+            // @include rect(null, auto);
+            .m-tabs-0-0{
+              @include rect(.594rem, .3rem)
+            }
+          }
+          .am-tabs-content-wrap{
+            
+          }
+        .am-tabs-default-bar-underline{
+          border: 1px #fb7d34 solid;
+        }
+        }
+
+      }
+    }
+  }
+}
