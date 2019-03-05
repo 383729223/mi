@@ -1,34 +1,75 @@
 import React, { Component } from 'react';
 import Api from '@/api/detail'
 import './Detail.scss'
-import { Carousel } from 'antd-mobile';
+import { Carousel,Badge  } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
 class Com extends Component {
   constructor(props){
     super(props)
     this.state={
-      msg:[]
+      msg:[],
+      sumCount:0
     }
   }
   componentDidMount () {
-    console.log(this)
     const id = this.props.match.params.id
     Api.requestData('/mi/detail/search?goodsId='+id).then(data=>{
-      // console.log(data)
       this.setState({
         msg:data
       })
-    })
+    });
+    this.buyCountFn();
   }
-  addCart(){
 
+  buyCountFn(){
+    if(localStorage.getItem('buyCart')){
+      let buyDatas=JSON.parse(localStorage.getItem('buyCart'));
+      let sum=0;
+      buyDatas.forEach(item => {
+        sum+=item.buyCount;
+      })
+      this.setState({
+        sumCount:sum
+      })
+    }
+  }
+
+  addCart(){
+    
+    if(localStorage.getItem('buyCart')){
+      let newArr=[];
+      let id=this.props.match.params.id;
+      id=id*1;
+      newArr=JSON.parse(localStorage.getItem('buyCart'));
+
+      let data=this.state.msg;
+      data[0]['buyCount']=1;
+
+      let result = newArr.filter(item => {
+        if (item.goodsId === id) {
+          item.buyCount = item.buyCount * 1 + 1
+        }
+        return item.goodsId === id
+      })
+      if (result.length === 0) {
+        newArr.push(data[0])
+      }
+
+      localStorage.setItem('buyCart',JSON.stringify(newArr))
+      
+    }else{
+      let data=this.state.msg;
+      data[0].buyCount=1;
+      localStorage.setItem('buyCart',JSON.stringify(data));
+    }
+    this.buyCountFn()
   }
  
   render () {
     let html=[]
     if(this.state.msg.length===0){
-      html=<div>Loading....</div>
+      html=<h3>Loading....</h3>
       
     }else{
       html.push(
@@ -80,6 +121,7 @@ class Com extends Component {
             <Link to="/cart" className="detailCart">
               <span className="iconfont icon-gouwuche2"></span>
               <p>购物车</p>
+              <Badge className="sumCount" text={this.state.sumCount} overflowCount={20}/>
             </Link>
           </div>
           <div className="addCart" onClick={ this.addCart.bind(this) }>加入购物车</div>

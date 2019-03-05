@@ -88,11 +88,17 @@
                 @include justify-content();
                 @include background-color(#fff);
                 @include text-color(#666);
+                position: relative;
                 span {
                     @include font-size(0.2rem);
                 }
                 p {
                     @include text-align();
+                }
+                .sumCount {
+                    position: absolute;
+                    top: 0;
+                    right: -4px;
                 }
             }
         }
