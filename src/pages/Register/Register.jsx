@@ -124,7 +124,7 @@ class Com extends Component {
             <div className='mid_t'>
             <InputItem
               type="text"
-              placeholder="请输入小米ID"
+              placeholder="请输入用户名"
               error={this.state.hasError}
               onErrorClick={this.onErrorClick}
               onChange={this.onChange}

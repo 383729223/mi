@@ -72,10 +72,21 @@ class Com extends Component {
           this.props.history.push('/home');
           clearTimeout(timer)
         }, 1000)
+      } else if (data === -1) {
+        Toast.fail('用户不存在', 1)
       } else {
-        Toast.fail('登录失败', 1)
+        Toast.fail('用户名或密码错误', 1)
       }
     })
+  }
+  showPassword (event) {
+    let passwordType = document.querySelectorAll('.am-input-control')[1].children[0];
+    if(passwordType.type === 'password'){
+      passwordType.type = 'text'
+      // console.log(svg)
+    } else {
+      passwordType.type = 'password'
+    }
   }
   goRegister () {
     this.props.history.push('/registerapp/register')
@@ -109,7 +120,7 @@ class Com extends Component {
             ></InputItem>
             <div className='password'>
               <InputItem
-                className='yanzhengma'
+                className='passwordInp'
                 type="password"
                 placeholder="密码"
                 error={this.state.hasPasswordError}
@@ -117,7 +128,7 @@ class Com extends Component {
                 onChange={this.onPasswordChange}
                 value={this.state.password}
               ></InputItem>
-              <span className='sendcode'>
+              <span className='sendcode' onClick={ this.showPassword.bind(this)}>
                 <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
                   <path className="eye_outer" d="M0 8 C6 0,14 0,20 8, 14 16,6 16, 0 8 z"></path>
                   <circle className="eye_inner" cx="10" cy="8" r="3"></circle>

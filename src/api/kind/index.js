@@ -2,9 +2,9 @@ import axios from 'axios'
 import baseUrl from '@/api'
 
 const api = {
-    loginCheck(url, params) {
+    requestData(url) {
         return new Promise((resolve, reject) => {
-            axios.post(baseUrl + url, params)
+            axios.get(baseUrl + url)
                 .then((data) => {
                     resolve(data)
                 })
@@ -13,7 +13,7 @@ const api = {
                 });
         })
     },
-    userDetail(url) {
+    requestDatas(url) {
         return new Promise((resolve, reject) => {
             axios.get(baseUrl + url)
                 .then((data) => {
@@ -24,7 +24,6 @@ const api = {
                 });
         })
     }
-    
 
 }
 

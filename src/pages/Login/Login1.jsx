@@ -41,7 +41,7 @@ class Com extends Component {
           <WingBlank>
             <div className='top'>
               <div className='logo'>
-                <img src="./logo.png" alt="a"/>
+                <img src="https://account.xiaomi.com/static/res/11eb7d1/account-static/respassport/acc-2014/img/2018/milogo@2x.png" alt="a"/>
                 <span>小米账号登录</span>
               </div>
             </div>
