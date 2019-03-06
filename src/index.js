@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import App from '@/layout/App';
 import RegisterApp from '@/layout/RegisterApp';
 import DetailApp from '@/layout/DetailApp';
+import CartApp from '@/layout/CartApp';
 import './main.scss'
 import * as serviceWorker from './serviceWorker';
 import 'antd-mobile/dist/antd-mobile.css'; 
@@ -16,6 +17,7 @@ function renderFn(){
     <Provider store={ store }>
         <Router>
             <Switch>
+                <Route path='/cartapp' component={ CartApp } />
                 <Route path='/detailapp' component={ DetailApp } />
                 <Route path='/registerapp' component={ RegisterApp } />
                 <Route path='/' component={ App } />
