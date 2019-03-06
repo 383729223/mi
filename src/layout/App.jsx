@@ -5,14 +5,11 @@ import Kind from '@/pages/Kind/Kind.jsx';
 import Cart from '@/pages/Cart/Cart.jsx';
 import User from '@/pages/User/User.jsx';
 import { Badge } from 'antd-mobile';
+import store from '@/store'
+import action from '@/store/cart/action'
 
 class App extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            sumCount:0
-        }
-    }
+
     componentDidMount(){
         this.buyCountFn();
     }
@@ -21,11 +18,9 @@ class App extends Component {
             let buyDatas=JSON.parse(localStorage.getItem('buyCart'));
             let sum=0;
             buyDatas.forEach(item => {
-            sum+=item.buyCount;
+                sum+=item.buyCount;
             })
-            this.setState({
-            sumCount:sum
-            })
+            store.dispatch(action.sumCount(sum))
         }
     }
     render(){
@@ -34,7 +29,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/home" component={ Home } />
                     <Route path="/kind" component={ Kind } />
-                    <Route path="/cart" component={ Cart } />
+                    <Route path="/cartapp/cart" component={ Cart } />
                     <Route path="/user" component={ User } />
                     <Redirect path="/" to="/home" />
                 </Switch>
@@ -48,10 +43,10 @@ class App extends Component {
                             <span className="iconfont icon-sousuofenlei"></span>
                             <span>分类</span>
                         </NavLink>
-                        <NavLink to="/cart" className="cart">
+                        <NavLink to="/cartapp/cart" className="cart">
                             <span className="iconfont icon-gouwuche2"></span>
                             <span>购物车</span>
-                            <Badge className="sumCount" text={this.state.sumCount} size="large" overflowCount={20}/>
+                            <Badge className="sumCount" text={store.getState().cartStore.count} size="large" overflowCount={20}/>
                         </NavLink>
                         <NavLink to="/user">
                             <span className="iconfont icon-wode"></span>

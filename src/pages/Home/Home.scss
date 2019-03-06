@@ -34,6 +34,10 @@
             }
         }
     }
+    .homeContent {}
+    .am-tabs-default-bar-underline {
+        border: 2px #fb7d34 solid;
+    }
     .fristTab {
         .homeNav {
             @include flexbox();

@@ -1,10 +1,134 @@
 @import '@/qunar/reset.scss';
-.container {
-    header.cartHeader {
-        .am-navbar-title {
-            @include text-color(#666);
-            @include font-size(0.17rem);
+header.cartHeader {
+    @include rect(100%, 0.48rem);
+    @include background-color(#F2F2F2);
+    .am-navbar-title {
+        @include text-color(#666);
+        @include font-size(0.17rem);
+    }
+}
+
+div.cartContainer {
+    @include flex();
+    @include rect(100%, auto);
+    @include flexbox();
+    @include align-items();
+    @include flex-direction(column);
+    div.cartContent {
+        @include overflow();
+        @include flex();
+        @include rect(100%, auto);
+        .isLogin {
+            @include background-color(#fff);
+            @include text-color(#333);
+            @include flexbox();
+            @include justify-content(space-between);
+            @include align-items();
+            @include rect(100%, 0.5rem);
+            @include line-height(0.5rem);
+            @include padding(0 0.15rem 0 0.15rem);
+            span {
+                @include text-color(#666);
+                @include flexbox();
+                @include align-items();
+            }
+        }
+        .noLogin {
+            @include display(none);
+        }
+        ul.listBox {
+            @include rect(100%, auto);
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items();
+            @include justify-content(flex-start);
+            li {
+                @include padding(0.04rem 0 0.04rem 0);
+                @include background-color(#fff);
+                @include rect(100%, 1rem);
+                @include flexbox();
+                @include justify-content();
+                @include align-items();
+                .checkBtn {
+                    @include background-color(#fff);
+                    @include rect(0.5rem, 100%);
+                }
+                .listImg {
+                    @include rect(auto, 100%);
+                    img {
+                        @include rect(auto, 100%);
+                    }
+                }
+                .listInfo {
+                    @include flex();
+                    @include rect(auto, 100%);
+                    @include flexbox();
+                    @include flex-direction(column);
+                    p {
+                        @include flex(2);
+                        @include rect(100%, auto);
+                        @include ellipsis(80%, 2);
+                        @include text-color(#333);
+                        @include font-size(0.14rem);
+                        // @include line-height(0.24rem)
+                    }
+                    em {
+                        @include flex(1);
+                        @include rect(100%, auto);
+                        @include ellipsis(90%, 1);
+                        @include text-color(#666);
+                    }
+                    .countBox {
+                        @include flex(1);
+                        @include rect(100%, auto);
+                        @include flexbox();
+                        @include justify-content(space-between);
+                        @include align-items();
+                        .icon-lajitong {
+                            @include font-size(0.24rem);
+                            @include margin(0 0.08rem 0 0);
+                        }
+                    }
+                }
+            }
         }
     }
-    .cartContent {}
+    footer.cartFooter {
+        @include rect(100%, 0.6rem);
+        @include flexbox();
+        @include align-items();
+        .cartFooterBox {
+            @include flex();
+            @include rect(auto, 100%);
+            @include flexbox();
+            @include align-items();
+            @include justify-content();
+            @include flex-direction(column);
+        }
+        div.sum {
+            @include background-color(#fff);
+            p {
+                @include text-color(#999);
+            }
+            span {
+                @include text-color(#FF6700);
+                @include font-size(0.3rem);
+                @include font-weight();
+                i {
+                    @include text-color(#999);
+                    @include font-size(0.16rem);
+                    @include font-weight(400);
+                }
+            }
+        }
+        a.keepOn {
+            @include font-size(0.2rem);
+            @include text-color(#666);
+        }
+        div.compute {
+            @include text-color(#fff);
+            @include font-size(0.2rem);
+            @include background-color(#FF6700);
+        }
+    }
 }
