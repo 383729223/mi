@@ -65,9 +65,12 @@
           }
         }
         .password{
+          @include flexbox();
+          @include align-items(center);
+          @include border(0 0 1px 0, #d3d3d3, solid);
+          .am-list-item {
           @include font-size(.18rem);
           @include rect(100%, auto);
-          @include border(0 0 1px 0, #d3d3d3, solid);
           @include padding(0 0 0 .1rem);
           @include flexbox();
           @include justify-content(space-around);
@@ -76,10 +79,12 @@
             @include rect(3.15rem, .53rem);
             @include padding(0);
           }
+        }
           .sendcode{
             @include rect(.2rem, .16rem);
             @include text-color(#2ea5e5);
             @include font-size(.14rem);
+            // @include margin(.15rem 0 0 0);
             svg{
               .eye_outer{
                 fill: #4d4d4d;
@@ -92,6 +97,7 @@
               }
             }
           }
+
         }
         .btn{
           @include margin(.24rem 0 0 0);
@@ -184,19 +190,31 @@
         }
       }
       .bottom{
-        @include padding(.6rem 0 0  0);
+        // @include flex();
+        @include rect(100%, 15%);
+        @include flexbox();
+        @include align-items(center);
+        // @include padding(.6rem 0 0  0);
         .bottom_b{
+          @include rect(100%, auto);
           ul{
+            @include rect(100%, auto);
             @include flexbox();
-            @include justify-content(space-around);
+            @include justify-content(space-between);
             li{
+              // @include flex();
+              @include flexbox();
+              @include justify-content(space-between);
+              @include rect(auto, auto);
               a{
+                @include text-align(center);
+                @include rect(100%, auto);
                 @include text-color(#9b9b9b);
-                @include padding(0 .1rem);
+                // @include padding(0 .1rem);
               }
               .a1{
                 @include text-color(#4a4a4a);
-                @include padding(0 .1rem);
+                // @include padding(0 .1rem);
               }
             }
           }

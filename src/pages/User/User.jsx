@@ -1,11 +1,37 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { List } from 'antd-mobile';
+import store from '@/store';
 import './User'
 const Item = List.Item;
 class Com extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      username: ''
+    }
+  }
+  componentDidMount () {
+    this.setState({
+      username: store.getState().loginStore.username
+    })
+    if(store.getState().loginStore.username){
+      this.setState({
+        username: store.getState().loginStore.username
+      })
+      document.querySelector('.userLogin').style.display = 'none'
+    } else {
+      document.querySelector('.userName').style.display = 'none'
+      this.setState({
+        username: '登录/注册'
+      })
+    }
+  }
   goLogin () {
     this.props.history.push('/registerapp/login')
+  }
+  goOut () {
+
   }
   render () {
     return (
@@ -15,7 +41,8 @@ class Com extends Component {
             <div className='userImg'>
               <img src="https://m.mi.com/static/img/avatar.76a75b8f17.png" alt=""/>
             </div>
-            <div className='userLogin' onClick={this.goLogin.bind(this)}>登录/注册</div>
+            <div className='userLogin' onClick={this.goLogin.bind(this)}>{this.state.username}</div>
+            <div className='userName' onClick={this.goOut.bind(this)}>{this.state.username}<br/><span>{store.getState().loginStore.tel}</span></div>
           </div>
         </header>
         <div className="content userContent">

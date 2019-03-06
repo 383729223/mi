@@ -83,9 +83,13 @@ class Com extends Component {
     let passwordType = document.querySelectorAll('.am-input-control')[1].children[0];
     if(passwordType.type === 'password'){
       passwordType.type = 'text'
+      document.querySelector('.eye_outer').style.fill='#ff6700'
+      document.querySelector('.eye_inner').style.fill='#ff6700'
       // console.log(svg)
     } else {
       passwordType.type = 'password'
+      document.querySelector('.eye_outer').style.fill='#4d4d4d'
+      document.querySelector('.eye_inner').style.fill='#4d4d4d'
     }
   }
   goRegister () {
@@ -166,10 +170,10 @@ class Com extends Component {
             <div className='bottom'>
               <div className='bottom_b'>
                 <ul>
-                  <li><a className='a1' href='localhost:3000/registerapp/login'>简体</a>|</li>
-                  <li><a className='a2' href='https://account.xiaomi.com/pass/serviceLogin?callback=https%3A%2F%2Fm.mi.com%2Fv1%2Fauthorize%2Fsso_callback%3Ffollowup%3Dhttps%253A%252F%252Fm.mi.com%252Fuser%26sign%3DZWJiMDc5YWVjOTNkNGE5YzM4Mjc2Y2I1MGYxMmE0YmY4MmRkMDY1Ng%2C%2C&sid=mi_eshopm_go&_bal=true&_loginSign=ticket&_loginType=ticket&_locale=zh_TW'>繁体</a>|</li>
-                  <li><a className='a3' href='https://account.xiaomi.com/pass/serviceLogin?callback=https%3A%2F%2Fm.mi.com%2Fv1%2Fauthorize%2Fsso_callback%3Ffollowup%3Dhttps%253A%252F%252Fm.mi.com%252Fuser%26sign%3DZWJiMDc5YWVjOTNkNGE5YzM4Mjc2Y2I1MGYxMmE0YmY4MmRkMDY1Ng%2C%2C&sid=mi_eshopm_go&_bal=true&_loginSign=ticket&_loginType=ticket&_locale=en'>English</a>|</li>
-                  <li><a className='a4' href='https://static.account.xiaomi.com/html/faq/en_US/faqList.html'>常见问题</a>|</li>
+                  <li><a className='a1' href='localhost:3000/registerapp/login'>简体</a></li>
+                  <li><a className='a2' href='https://account.xiaomi.com/pass/serviceLogin?callback=https%3A%2F%2Fm.mi.com%2Fv1%2Fauthorize%2Fsso_callback%3Ffollowup%3Dhttps%253A%252F%252Fm.mi.com%252Fuser%26sign%3DZWJiMDc5YWVjOTNkNGE5YzM4Mjc2Y2I1MGYxMmE0YmY4MmRkMDY1Ng%2C%2C&sid=mi_eshopm_go&_bal=true&_loginSign=ticket&_loginType=ticket&_locale=zh_TW'>繁体</a></li>
+                  <li><a className='a3' href='https://account.xiaomi.com/pass/serviceLogin?callback=https%3A%2F%2Fm.mi.com%2Fv1%2Fauthorize%2Fsso_callback%3Ffollowup%3Dhttps%253A%252F%252Fm.mi.com%252Fuser%26sign%3DZWJiMDc5YWVjOTNkNGE5YzM4Mjc2Y2I1MGYxMmE0YmY4MmRkMDY1Ng%2C%2C&sid=mi_eshopm_go&_bal=true&_loginSign=ticket&_loginType=ticket&_locale=en'>English</a></li>
+                  <li><a className='a4' href='https://static.account.xiaomi.com/html/faq/en_US/faqList.html'>常见问题</a></li>
                   <li><a className='a5' href='https://www.mi.com/about/privacy/'>隐私政策</a></li>
                 </ul>
               </div>
