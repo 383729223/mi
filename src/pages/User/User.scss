@@ -26,6 +26,13 @@
         @include text-color(#fff);
         @include font-size(.13rem);
       }
+      .userName{
+        @include text-color(#fff);
+        @include font-size(.15rem);
+        span{
+          @include font-size(.13rem);
+        }
+      }
     }
   }
   .userContent{

@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { Tabs, WhiteSpace, NavBar, Icon } from 'antd-mobile';
+import { Tabs, WhiteSpace, ActivityIndicator, NavBar, Icon } from 'antd-mobile';
 import store from '@/store';
 import action from '@/store/kind/action'
 import './Kind';
+import { Link } from 'react-router-dom'
 // import store from '@/store'
+
 class Com extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      list: []
+      list: [],
+      index:'0'
     }
   }
   componentDidMount() {
@@ -23,93 +26,74 @@ class Com extends Component {
         list: data
       })
     });
+    this.showToast()
+  }
+  showToast = () => {
+    this.setState({ animating: !this.state.animating });
+    this.closeTimer = setTimeout(() => {
+      this.setState({ animating: !this.state.animating });
+      clearTimeout(this.closeTimer)
+    }, 1000);
+  }
+  scrollToAnchor = (anchorName, e, e1) => {
+    // console.log(anchorName)
+    // console.log(e)
+    if (e1+'x') {
+        let anchorElement = document.getElementById(e1+'x');
+        // console.log(anchorElement)
+        if(anchorElement) { anchorElement.scrollIntoView(); }
+        let underline = document.querySelector('.am-tabs-default-bar-underline');
+        let ele = document.querySelector('.am-tabs-default-bar-content').children
+        for (let i = 0; i < 7; i++){
+          ele[i].style.color = '#3c3c3c';
+        }
+        underline.style.top = 20 * e1 + '%';
+        // console.log();
+        ele[e1].style.color='rgb(251, 125, 52)'
+        // ele.setAttribute('aria-selected', true)
+    }
   }
   goBack () {
     this.props.history.go(-1)
   }
   change (activeTab,goToTab) {
-      this.props.match.url = '/kind#dianshi'
+    // console.log( document.documentElement.scrollTop);
     }
   render () {
     const tabs = [];
-    let html1 = [<li id='phone' key>手机专区</li>]
-    let html2 = [<li id='dianshi' key>电视专区</li>]
-    let html3 = [<li id='computer' key>电脑专区</li>]
-    let html4 = [<li id='jiadian' key>家电专区</li>]
-    let html5 = [<li id='luyou' key>路由专区</li>]
-    let html6 = [<li id='chuxin' key>出行专区</li>]
-    let html7 = [<li id='chuandai' key>穿戴专区</li>]
-    this.state.list.map((item, index) => {
-      if(item.type==='手机'){
-        html1.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-      )
-      } else if(item.type==='电视'){
-        html2.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-      )
-      } else if(item.type==='电脑'){
-        html3.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-      )
-      } else if(item.type==='家电'){
-        html4.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-      )
-      } else if(item.type==='路由'){
-        html5.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-      )
-      } else if(item.type==='出行'){
-        html6.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-      )
-      } else {
-        html7.push(<li key={item.goodsId}>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
-        <img width='50px' src ={item.imgsrc} alt=''/>
-        </li>
-        )
-      }
-     return ''
-      
-    })
-    let html = [html1,html2,html3,html4,html5,html6,html7]
+    let html = [];
+    let imgs = ['//i8.mifile.cn/v1/a1/eacf5445-a567-c5e1-0318-78cf3938f8d4!500x200.webp','//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/69bf9d06a7285a70adbec96448d5377c.jpg?thumb=1&w=500&h=200','//i8.mifile.cn/v1/a1/efdcf401-f553-aef7-1751-43854b6f4a20!500x200.webp','//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/17dbc837b82de528f8f4abf4ede0753a.jpg?thumb=1&w=500&h=200','//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f1042af20f63f37c30bd9399efdc0b7a.jpg?thumb=1&w=500&h=200','//i8.mifile.cn/v1/a1/ff205815-61e1-ef9f-d7d2-5650f1224c4b!500x200.webp','//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/55a9f5db1e6cd217a27b6b59d64509cd.jpg?thumb=1&w=500&h=200']
     this.state.data.map((item, index) => {
+      html.push(<li id ={index+'x'} className='kind_type' key={index}><div className='kind_imgs'><img alt='' src={imgs[index]}/></div><div className='kind_types'><div className='line'></div>&nbsp;&nbsp;&nbsp;{item}专区&nbsp;&nbsp;&nbsp;<div className='line'></div></div></li>);
+      this.state.list.map((ite, ind) => {
+        if(ite.type===item){
+          // console.log(ite.type)
+          html.push(<Link to={'/detailapp/detail/' + ite.goodsId} className='kind_goods' key={ind+10}><div className='kind_img'><img src={ ite.imgsrc } alt=''/></div><p className='kind_name'>{ite.title}</p></Link>)
+        } 
+       return ''
+        
+      })
       tabs[index] = {
         title: item
         }
         return ''
     })
-    
+    html.push(<div key='11111111111' className='kind_space'></div>)
     return (
       <div className = "container">
+        <ActivityIndicator
+                toast
+                text="Loading..."
+                animating={this.state.animating}
+              />
         <header className="header kindHeader">
-          <NavBar
+        <NavBar
             mode="light"
-            icon={<Icon type="left" />}
+            icon={<Icon type="left" size="lg" color="#999" />}
+            style={{ backgroundColor: '#F2F2F2' }}
             onLeftClick={this.goBack.bind(this)}
             rightContent={[
-              <Icon key="0" type="search" style={{ marginRight: '.03rem' }} />,
+              <Icon key="0" type="search" color="#999" size="md" style={{ marginRight: '16px' }} />
             ]}
           >分类</NavBar>
         </header>
@@ -117,16 +101,19 @@ class Com extends Component {
           <div className='kindList'>
             <WhiteSpace />
             <Tabs tabs={tabs}
-              initalPage={'t4'}
+              initalPage={'t2'}
               tabBarPosition="left"
               tabDirection="vertical"
               tabBarActiveTextColor='#fb7d34'
-              onTabClick={this.change.bind(this)}
-              activeTab
-              goToTab
+              onTabClick={this.scrollToAnchor.bind(this,'2x')}
+              // onChange={this.scroll.bind(this)}
+              page='0'
+              animated ={true}
+              // destroyInactiveTab = {true}
+              // usePaged = {false}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'auto', backgroundColor: '#fff' }}>
-                <ul>
+                <ul className='kind_ul'>
                 {
                   html
                 }</ul>

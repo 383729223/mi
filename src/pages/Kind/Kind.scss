@@ -12,10 +12,15 @@
     @include text-color(#666);
     .am-navbar-title{
       @include text-color(#666);
-      @include font-size(.15rem);
+      @include font-size(0.17rem);
       
     }
+    .am-navbar-right{
+      @include font-size(0)
+    }
     .am-navbar-left{
+      @include font-size(0);
+
       .am-icon{
         // @include rect(.22rem, .33rem);
       }
@@ -24,17 +29,27 @@
 }
 div.kindContent.content#kindId{
   @include padding(.54rem 0 0 0);
-  @include rect(100%, 100%)
+  @include rect(100%, 100%);
+  
   .kindList{
-    @include rect(100%, 100%)
+    @include rect(100%, 100%);
     .am-whitespace.am-whitespace-md{
       @include rect(0, 0);
     }
     .am-tabs{
       // @include rect(100%, 5.5rem);
+      @include rect(100%, 100%);
+      .am-tabs-tab-bar-wrap{
+        @include rect(auto, 100%);
       .am-tabs-default-bar{
+        @include flexbox();
+        @include flex-direction(column);
         .am-tabs-default-bar-content{
-          @include rect(.594rem,auto)
+          // @include flexbox();
+          // @include flex-direction(column);
+          // @include flex();
+          // @include rect(auto,auto);
+          @include rect(.594rem,auto);
           // @include rect(.594rem, 5.5rem)
           .am-tabs-tab-bar-wrap{
             // @include rect(null, auto);
@@ -42,14 +57,83 @@ div.kindContent.content#kindId{
               @include rect(.594rem, .3rem)
             }
           }
-          .am-tabs-content-wrap{
-            
+          
+          .am-tabs-default-bar-underline{
+            border: 1px #fb7d34 solid;
           }
-        .am-tabs-default-bar-underline{
-          border: 1px #fb7d34 solid;
-        }
         }
 
+      }
+    }
+      .am-tabs-content-wrap{
+        @include rect(100%, auto);
+        .kind_ul{
+          @include rect(100%, auto);
+          @include flexbox();
+          @include justify-content(left);
+          @include flex-wrap(wrap);
+          // @include flex-direction(column);
+          .kind_goods{
+            @include flexbox();
+            @include flex-direction(column);
+            @include justify-content(center);
+            @include align-items(center);
+            @include rect(33%, auto);
+            @include margin(.1rem 0 .1rem 0);
+            .kind_img{
+              @include rect(50%, auto);
+              img{
+                @include rect(100%, 100%);  
+              }
+            }
+            
+            .kind_name{
+              @include ellipsis(90%, 1);
+              @include text-align(center);
+              @include font-size(13px);
+              @include color(rgba(0,0,0,.54));
+              @include margin(.1rem 0 0 0);
+            }
+            
+          }
+          
+          .kind_type{
+            
+            // @include margin(.1rem 0);
+            @include rect(100%, auto);
+            @include flexbox();
+            // @include line-height();
+            @include justify-content(center);
+            @include align-items(center);
+            @include flex-direction(column);
+            background: #fff;
+            font-size: .14rem;
+            font-weight: 400;
+            // @include font-size(.2rem);
+            .kind_imgs{
+              @include rect(90%, auto);
+              @include padding(.1rem 0);
+              img{
+                @include rect(100%, auto)
+              }
+            }
+            .kind_types{
+              @include margin(.1rem 0);
+              @include rect(100%, .65rem);
+              @include flexbox();
+              @include line-height(.15rem);
+              @include justify-content(center);
+              @include align-items(center);
+              .line{
+                @include rect(.2rem, null);
+                @include border(2px 0 0 0, red, solid)
+              }
+            }
+          }
+          .kind_space{
+            @include rect(100%, 390px)
+          }
+      }
       }
     }
   }

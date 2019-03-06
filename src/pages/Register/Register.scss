@@ -5,12 +5,14 @@
     @include rect(100%, 100%);
     @include background-color(#fff);
     @include flexbox();
+    @include justify-content(space-between);
     @include flex-direction(column);
     .am-wingblank{
       @include padding(0 .05rem);
       .top{
         @include rect(100%, auto);
         @include font-size(.2rem);
+        @include margin(5% 0 0 0);
         .logo{
           @include rect(100%, auto);
           @include padding(.35rem 0 .2rem);
@@ -25,6 +27,7 @@
         }
       }
       .mid_t{
+        // @include margin(10% 0 0 0);
         .am-list-item{
           @include border(0 0 1px 0, #d3d3d3, solid);
           @include padding(0 0 0 .1rem);
@@ -184,20 +187,30 @@
         }
       }
       .bottom{
-        @include rect(100%, .2rem);
-        @include margin(1.6rem 0 0  0);
+        // @include rect(100%, .2rem);
+        // @include margin(1.6rem 0 0  0);
+        @include rect(100%, 50%);
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
         .bottom_b{
+          @include rect(100%, auto);
           ul{
+            @include rect(100%, auto);
             @include flexbox();
-            @include justify-content(center);
+            // @include justify-content(center);
             li{
+              @include flex();
+              @include flexbox();
+              // @include justify-content(center);
+              // @include rect(20%, auto);
               a{
+                @include text-align(center);
+                @include rect(100%, auto);
                 @include text-color(#9b9b9b);
-                @include padding(0 .1rem);
               }
               .a1{
                 @include text-color(#4a4a4a);
-                @include padding(0 .1rem);
               }
             }
           }
