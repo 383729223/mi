@@ -44,7 +44,6 @@ class Com extends Component {
             tabBarUnderlineStyle={'#ed5b00'}
             tabBarBackgroundColor={'#F2F2F2'}
             className="content homeContent"
-            // tabBarUnderlineStyle={{backgroundColor:'#F2F2F2'}}
         >
             {/* 首页第一个tab */}
             <div className="fristTab">

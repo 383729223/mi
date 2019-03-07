@@ -28,9 +28,8 @@ class Com extends Component {
     }
 
     this.buyCountFn()
-
   }
-
+  
   // 气泡数量变化函数
   buyCountFn(){
       if(localStorage.getItem('buyCart')){
@@ -61,9 +60,6 @@ class Com extends Component {
   }
   // 改变选中状态
   hasCheck=(id,value)=>{
-    console.log(id,value)
-    console.log(value.target.checked)
-    console.log(this.state.listMsg)
     this.state.cartList.forEach(item=>{
       if(item.goodsId===id){
         if(item.hasChecked !== value.target.checked){
@@ -109,12 +105,41 @@ class Com extends Component {
 
 
   render () {
+    let cartListHtmlArr=[];
+    let arr=JSON.parse(localStorage.getItem('buyCart'))
+    if(arr==null){
+      cartListHtmlArr=<h3>请选购产品！</h3>
+    }else{
+      arr.map((item,index)=>{
+        cartListHtmlArr.push(
+          <li key={item.goodsId}>
+                  <CheckboxItem key={index} className="checkBtn" defaultChecked={item.hasChecked} onChange={this.hasCheck.bind(this,item.goodsId)}></CheckboxItem>
+                  <div className="listImg"><img src={item.showImg} alt=""/></div>
+                  <div className="listInfo">
+                      <p>{item.title}</p>
+                      <em>售价：{item.attr.ram[0].text[1]}元</em>
+                      <div className="countBox"><Stepper
+                        style={{ width: '50%', minWidth: '100px' }}
+                        showNumber
+                        max={100}
+                        min={1}
+                        defaultValue={item.buyCount}
+                        onChange={this.changeCount.bind(this,item.goodsId)}
+                      /><div className="iconfont icon-lajitong" onClick={this.deleteList.bind(this,item.goodsId)}></div></div>
+                  </div>
+                </li>
+        )
+        return ""
+      })
+    }
+
     return (
       <div className = "cartContainer">
         <div className="content cartContent">
             <Link to="/registerapp/login" className={this.state.hasLogin}>登录后享受更多优惠<span>去登陆<Icon type="right" /></span></Link>
             <ul className="listBox">
-              {this.state.cartList.map((item,index)=>(
+              { cartListHtmlArr }
+              {/* {this.state.cartList.map((item,index)=>(
                 <li key={item.goodsId}>
                   <CheckboxItem key={index} className="checkBtn" defaultChecked={item.hasChecked} onChange={this.hasCheck.bind(this,item.goodsId)}></CheckboxItem>
                   <div className="listImg"><img src={item.showImg} alt=""/></div>
@@ -131,7 +156,7 @@ class Com extends Component {
                       /><div className="iconfont icon-lajitong" onClick={this.deleteList.bind(this,item.goodsId)}></div></div>
                   </div>
                 </li>
-              ))}
+              ))} */}
             </ul>
         </div>
         <footer className="cartFooter">
