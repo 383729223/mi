@@ -6,7 +6,7 @@ import { Carousel} from 'antd-mobile';
 let banner = ({banner}) => {
         let html=[]
         if(banner.length===0){
-            html=<h1>LOADING...</h1>
+            html=<div style={{width:"100%",height:"100%",textAlign:"center"}}><img src="http://www.sucaijishi.com/uploadfile/2015/0210/20150210104952902.gif" alt="" width="auto" height="200%"/></div>
         }else{
             html=<Carousel
             autoplay={true}

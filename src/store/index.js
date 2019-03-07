@@ -5,6 +5,7 @@ import loginStore from './login/store'
 import registerStore from './register/store'
 import kindStore from './kind/store'
 import cartStore from './cart/store'
+import searchStore from './search/store'
 
 // combineReducers 可以用来组合各个分reducer
 const reducer = combineReducers({
@@ -12,7 +13,8 @@ const reducer = combineReducers({
     loginStore,
     registerStore,
     kindStore,
-    cartStore
+    cartStore,
+    searchStore
 })
 
 const store = createStore(reducer, applyMiddleware(thunk));

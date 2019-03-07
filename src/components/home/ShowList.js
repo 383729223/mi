@@ -7,7 +7,8 @@ import './ShowList.scss'
 let showList = ({list}) => {
     let html=[]
     if(list.length===0){
-      html=<h1>LOADING...</h1>
+      html=<div style={{width:"100%",textAlign:"center"}}><img src="http://www.sucaijishi.com/uploadfile/2013/0527/20130527034921885.gif" alt="" width="80%" height="auto"/></div>
+
     }else{
         list.map(item=>{
           html.push(

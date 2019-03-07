@@ -1,0 +1,33 @@
+@import '@/qunar/reset.scss';
+.app {
+    div.searchBox {
+        @include flexbox();
+        @include flex-direction(column);
+        @include align-items();
+        header.searchHeader {
+            @include rect(100%, 0.45rem);
+            @include background-color(#F2F2F2);
+        }
+        .searchContent {
+            @include flex();
+            @include rect(100%, auto);
+            @include overflow();
+            // 没有搜索到产品的样式
+            .noResolve {
+                @include flexbox();
+                @include flex-direction(column);
+                @include justify-content();
+                @include align-items();
+                img {
+                    @include rect(50%, 50%);
+                }
+                p {
+                    @include font-size(0.16rem);
+                    @include text-color(#999);
+                    @include text-align();
+                }
+            }
+            .listBox {}
+        }
+    }
+}
