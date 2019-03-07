@@ -99,7 +99,7 @@ class Com extends Component {
     if(store.getState().loginStore.tel===""){
       this.props.history.push('/registerapp/login')
     }else{
-      this.props.history.push('/home')
+      this.props.history.push('/cashapp/cash')
     }
   }
 
