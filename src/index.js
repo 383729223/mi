@@ -5,6 +5,7 @@ import App from '@/layout/App';
 import RegisterApp from '@/layout/RegisterApp';
 import DetailApp from '@/layout/DetailApp';
 import CartApp from '@/layout/CartApp';
+import CashApp from '@/layout/CashApp';
 import './main.scss'
 import * as serviceWorker from './serviceWorker';
 import 'antd-mobile/dist/antd-mobile.css'; 
@@ -18,6 +19,7 @@ function renderFn(){
         <Router>
             <Switch>
                 <Route path='/cartapp' component={ CartApp } />
+                <Route path='/cashapp' component={ CashApp } />
                 <Route path='/detailapp' component={ DetailApp } />
                 <Route path='/registerapp' component={ RegisterApp } />
                 <Route path='/' component={ App } />
