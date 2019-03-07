@@ -9,7 +9,8 @@
     left: 0;
     z-index: 999;
     i {
-        @include rect(0.35rem, 0.35rem) @include background-color(#5C5B66);
+        @include rect(0.35rem, 0.35rem);
+        @include background-color(#5C5B66);
         @include border-radius(50%);
         @include text-color(#FAFAFA);
         @include line-height(0.35rem);
