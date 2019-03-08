@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ShowList from '@/components/home/ShowList.js'
-import Lists from '@/components/home/Lists.js'
-import Banner from '@/components/home/Banner.js'
+import ShowList from '@/components/home/ShowList.js';
+import Lists from '@/components/home/Lists.js';
+import Banner from '@/components/home/Banner.js';
 import { Tabs,SearchBar } from 'antd-mobile';
 import store from '@/store'
 import action from '@/store/home/action'
@@ -16,7 +16,8 @@ class Com extends Component {
       bannerData:[],
       phoneListData:[],
       types:[],
-      typeDatas:[]
+      // typeDatas:[],
+      tabHtml:[]
     }
   }
   componentDidMount(){
@@ -34,68 +35,89 @@ class Com extends Component {
         bannerData:store.getState().homeStore.bannerList
       })
     })
+
     store.dispatch(action.requestTypeData('/mi/product/distinct')).then(data=>{
-      let newData=[];
-      data.forEach(item=>{
+      this.setState({
+        types:data
+      })
         
-        store.dispatch(action.requestTypeData('/mi/product/searchType?type='+item)).then(dat=>{
-          // console.log(dat)
-          newData.push({"type":item,"data":dat})
+      store.dispatch(action.requestTypeData('/mi/product/searchType?type='+data[0])).then(dat=>{
+        // console.log(dat)
+        let newData=[];
+        newData.push(<div key={0}>
+          <Banner banner={this.state.bannerData} />
+          <Lists list={dat} />
+        </div>)
+
+        this.setState({
+          tabHtml:newData
         })
       })
-      // console.log(newData)
-      let tiemr1=setTimeout(()=>{
-        this.setState({
-          types:data,
-          typeDatas:newData
-        })
-        clearTimeout(tiemr1)
-      },600)
+      
     })
-
-    
     
   }
+
+  componentDidUpdate(){
+    // store.dispatch(action.requestTypeData('/mi/product/searchType?type='+this.state.types[0])).then((dat,index)=>{
+    //   // console.log(dat)
+    //   let newData=[];
+    //   newData.push(<div key={0}>
+    //     <Banner banner={this.state.bannerData} />
+    //     <Lists list={dat} />
+    //   </div>)
+    //   this.setState({
+    //     tabHtml:newData
+    //   })
+    // })
+  }
+
   searchFn(value){
     store.dispatch(action.requestSearchData('/mi/product/search?title='+value)).then(data=>{
       this.props.history.push('/registerapp/search')
     })
     
   }
+
+
+  onTabClickFn(tab){
+      console.log(tab)
+      this.state.tabHtml.forEach(item=>{
+        let itmeKey=item.key*1;
+        if(tab.sub!==itmeKey){
+
+          store.dispatch(action.requestTypeData('/mi/product/searchType?type='+tab.title)).then((data)=>{
+            let newArr=[];
+            newArr.push(<div key={tab.sub}>
+              <Banner banner={this.state.bannerData} />
+              <Lists list={data} />
+            </div>)
+
+            let dataList=this.state.tabHtml.filter(itm=>{
+              let itmKey=itm.key*1
+              return itmKey!==tab.sub
+            })
+            // console.log(dataList)
+            // let dataList=this.state.tabHtml;
+            dataList.push(...newArr)
+            this.setState({
+              tabHtml:dataList
+            })
+          })
+        }
+      })
+      console.log(this.state.tabHtml)
+
+  }
+
+
   render () {
     // let tabs = [{title:'推荐'}];
     let tabs = [];
-    this.state.types.forEach(item=>{
-      tabs.push({"title":item})
+    this.state.types.forEach((item,index)=>{
+      tabs.push({"title":item,"sub":index})
     })
 
-    let tabHtml=[];
-    if(this.state.typeDatas.length===0){
-      console.log("空，没有数据")
-
-    }else{
-
-      // this.state.types.forEach(itm=>{
-        this.state.typeDatas.forEach((item,index)=>{
-          // console.log(item)
-            // if(itm===item.type){
-              tabHtml.push(<div key={index}>
-                <Banner banner={this.state.bannerData} />
-                <Lists list={item.data} />
-              </div>)
-
-            // }
-          })
-      // })
-    }
-    // this.state.typeDatas.map((item,index)=>(
-    //   <div key={index}>
-    //     <Banner banner={this.state.bannerData} />
-    //     <Lists list={item.data} />
-    //   </div>
-    // ))
-
-    // console.log(tabs)
     return (
       <div className = "container">
         <header className="header homeHeader">
@@ -116,6 +138,7 @@ class Com extends Component {
             tabBarUnderlineStyle={'#ed5b00'}
             tabBarBackgroundColor={'#F2F2F2'}
             className="content homeContent"
+            onTabClick={this.onTabClickFn.bind(this)}
         >
             {/* 首页第一个tab */}
             {/* <div className="fristTab">
@@ -143,7 +166,7 @@ class Com extends Component {
                 <ShowList list={this.state.listData} />
             </div> */}
             
-            {tabHtml}
+            {this.state.tabHtml}
             {/* {this.state.typeDatas.map((item,index)=>(
               <div key={index}>
                 <Banner banner={this.state.bannerData} />
