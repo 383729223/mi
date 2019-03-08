@@ -45,7 +45,6 @@ class Com extends Component {
       })
       // console.log(newData)
       let tiemr1=setTimeout(()=>{
-
         this.setState({
           types:data,
           typeDatas:newData
