@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ShowList from '@/components/home/ShowList.js';
+// import ShowList from '@/components/home/ShowList.js';
 import Lists from '@/components/home/Lists.js';
 import Banner from '@/components/home/Banner.js';
 import { Tabs,SearchBar } from 'antd-mobile';
@@ -17,14 +17,13 @@ class Com extends Component {
       phoneListData:[],
       types:[],
       // typeDatas:[],
-      tabHtml:[]
+      tabHtml:[],
+      html:""
     }
   }
+  
   componentDidMount(){
-    // console.log(this.props)
-    // this.props.requestData('/mi/product')
-    // this.props.requestBannerData('/mi/banner')
-    // // console.log(action)
+    
     store.dispatch(action.requestData('/mi/product')).then(data=>{
       this.setState({
         listData:store.getState().homeStore.lists
@@ -40,36 +39,53 @@ class Com extends Component {
       this.setState({
         types:data
       })
-        
-      store.dispatch(action.requestTypeData('/mi/product/searchType?type='+data[0])).then(dat=>{
-        // console.log(dat)
-        let newData=[];
-        newData.push(<div key={0}>
-          <Banner banner={this.state.bannerData} />
-          <Lists list={dat} />
-        </div>)
+      // console.log(data)
+      let newData=[];
+      let html=""
+      let newArr=[]
+      data.forEach((item,index)=>{
 
-        this.setState({
-          tabHtml:newData
+        store.dispatch(action.requestTypeData('/mi/product/searchType?type='+item)).then(dat=>{
+          // console.log(dat)
+          newData.push(<div key={index}>
+            <Banner banner={this.state.bannerData} />
+            <Lists list={dat} />
+          </div>)
+
+          newArr.push(dat)
+          
         })
+      })
+      
+      setTimeout(()=>{
+        // console.log(newArr)
+        if(newArr[0][0].type==="手机"){
+          // console.log(1)
+          html=(<div key={0}>
+            <Banner banner={this.state.bannerData} />
+            <Lists list={newArr[0]} />
+          </div>)
+          this.setState({
+            html:html
+          })
+        }else{
+          // console.log(2)
+          html=(<div key={0}>
+            <Banner banner={this.state.bannerData} />
+            <Lists list={newArr[1]} />
+          </div>)
+          this.setState({
+            html:html
+          })
+        }
+      },500)
+      
+      this.setState({
+        tabHtml:newData
       })
       
     })
     
-  }
-
-  componentDidUpdate(){
-    // store.dispatch(action.requestTypeData('/mi/product/searchType?type='+this.state.types[0])).then((dat,index)=>{
-    //   // console.log(dat)
-    //   let newData=[];
-    //   newData.push(<div key={0}>
-    //     <Banner banner={this.state.bannerData} />
-    //     <Lists list={dat} />
-    //   </div>)
-    //   this.setState({
-    //     tabHtml:newData
-    //   })
-    // })
   }
 
   searchFn(value){
@@ -81,32 +97,21 @@ class Com extends Component {
 
 
   onTabClickFn(tab){
-      console.log(tab)
-      this.state.tabHtml.forEach(item=>{
-        let itmeKey=item.key*1;
-        if(tab.sub!==itmeKey){
 
-          store.dispatch(action.requestTypeData('/mi/product/searchType?type='+tab.title)).then((data)=>{
-            let newArr=[];
-            newArr.push(<div key={tab.sub}>
-              <Banner banner={this.state.bannerData} />
-              <Lists list={data} />
-            </div>)
-
-            let dataList=this.state.tabHtml.filter(itm=>{
-              let itmKey=itm.key*1
-              return itmKey!==tab.sub
-            })
-            // console.log(dataList)
-            // let dataList=this.state.tabHtml;
-            dataList.push(...newArr)
-            this.setState({
-              tabHtml:dataList
-            })
-          })
+      let html=''
+      this.state.tabHtml.forEach((item,index)=>{
+        // console.log(item)
+        let itemKey=item.key*1
+        if(tab.sub===itemKey){
+          html=(<div key={tab.sub}>
+          <Banner banner={this.state.bannerData} />
+          <Lists list={item.props.children[1].props.list} />
+        </div>)
         }
       })
-      console.log(this.state.tabHtml)
+      this.setState({
+        html:html
+      })
 
   }
 
@@ -117,6 +122,7 @@ class Com extends Component {
     this.state.types.forEach((item,index)=>{
       tabs.push({"title":item,"sub":index})
     })
+
 
     return (
       <div className = "container">
@@ -166,7 +172,7 @@ class Com extends Component {
                 <ShowList list={this.state.listData} />
             </div> */}
             
-            {this.state.tabHtml}
+            {this.state.html}
             {/* {this.state.typeDatas.map((item,index)=>(
               <div key={index}>
                 <Banner banner={this.state.bannerData} />

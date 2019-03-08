@@ -18,7 +18,7 @@ class Com extends Component {
   }
   componentDidMount () {
     // store.dispatch(action.loginCheck(this.state.phone, this.state.password))
-    console.log(store.getState().homeStore.searchList)
+    // console.log(store.getState().homeStore.searchList)
     if(store.getState().homeStore.searchList.length===0){
       Toast.fail('没有找到相关产品！', 1)
        
