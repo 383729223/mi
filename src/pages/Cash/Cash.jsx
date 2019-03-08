@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './Cash.scss'
 import { List, Checkbox, Button, Accordion } from 'antd-mobile';
 // import { Link } from 'react-router-dom';
-// import store from '@/store'
+import store from '@/store'
 // import action from '@/store/cart/action'
 // InputItem, Carousel, Badge,
 const Item = List.Item;
@@ -13,11 +13,22 @@ class Com extends Component {
     super(props)
     this.state={
       msg:[],
-      showImg:""
+      showImg:"",
+      cartList:[],
+      hasLogin:'noLogin',
+      totlePrice:0,
+      listMsg:{}
     }
   }
+
   componentDidMount () {
-    
+    this.setState({
+      cartList:JSON.parse(localStorage.getItem('buyCart'))
+    })
+    if(store.getState().loginStore.tel===""){
+      // console.log(this.props)
+      this.props.history.push('/registerapp/login')
+    }
   }
   show () {
     let cashkind1 = document.querySelector('.cashkind1');
@@ -41,8 +52,25 @@ class Com extends Component {
 
     }
   }
+  check () {
+    console.log(document.querySelectorAll('.am-checkbox'));
+    document.querySelectorAll('.am-checkbox').className='am-checkbox am-checkbox-checked'
+  }
   render () {
-    
+    let html = [];
+    let price = 0;
+    let count = 0;
+    this.state.cartList.map((item, index) => {
+      price += item.buyCount * item.attr.ram[0].text[1]
+      count += item.buyCount
+      html.push(
+      <Item key={index}
+          thumb={item.showImg}
+          extra={item.attr.ram[0].text[1]*item.buyCount+'.00'}
+          onClick=''
+        >{item.title} {item.attr.color[0].text} x {item.buyCount}</Item>)
+        return ''
+    })
     return (
       <div className = "cashContainer">
         <div className="content cashContent">
@@ -54,7 +82,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_wx.png"
               extra={
-                <AgreeItem key='' onChange=''>
+                <AgreeItem key='' onChange={this.check.bind(this)} defaultChecked>
                 </AgreeItem>
               }
               onClick=''
@@ -62,7 +90,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_zfb2.png"
               extra={
-                <AgreeItem key='' onChange=''>
+                <AgreeItem key='' onChange={this.check.bind(this)}>
                 </AgreeItem>
               }
               onClick=''
@@ -110,7 +138,7 @@ class Com extends Component {
               <Item extra={'包邮'}>运费</Item>
             </div>
             <div className='cashM'>
-              <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
+              <Accordion defaultActiveKey="" className="my-accordion" onChange={this.onChange}>
                 <Accordion.Panel header="电子发票">
                   <List className="my-list">
                     <List.Item>
@@ -154,17 +182,13 @@ class Com extends Component {
               </Accordion>
             </div>
             <div className='cashB'>
-            <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
-                <Accordion.Panel header="优惠券">
+            <Accordion defaultActiveKey="" className="my-accordion" onChange={this.onChange}>
+                <Accordion.Panel header={<span className='cashQ'>优惠券<span className='cashY'>已优惠&nbsp;&nbsp;<em>0元</em></span></span>}>
                   <List className="my-list">
                     <List.Item>
-                    
                       <p>使用优惠券码</p>
                         <div  className="ui-box-flex">
-                        
                           <input  type="text" placeholder="请输入优惠券码"/>
-                        
-                        
                         <a href="1" className="ui-input-btn">确定</a>
                         </div>
                     </List.Item>
@@ -174,13 +198,33 @@ class Com extends Component {
             </div>
           </div>
 					<div className='cashGood'>
-            
+              {html}
+          </div>
+          <div className="cashInfo">
+            <div className="b51">
+              <p>
+                <strong>商品价格：</strong>
+                <span data-v-2c7c535a="">{price}.00</span>
+              </p>
+            </div>
+            <div className="b52">
+              <p>
+                <strong>已优惠：</strong>
+                <span>0.00</span>
+              </p>
+            </div>
+            <div className="b53">
+              <p>
+                <strong>配送费用：</strong>
+                <span>0.00</span>
+              </p>
+            </div>
           </div>
         </div>
         <footer className="cashFooter">
               <div className="sum cashFooterBox">
-                <p>共件&nbsp;金额：</p>
-                <span><i>元</i></span>
+                <p>共&nbsp;{count}件&nbsp;合计：</p>
+                <span><i>{price}元</i></span>
               </div>
               <div className="compute cashFooterBox" onClick=''>去付款</div>
         </footer>
