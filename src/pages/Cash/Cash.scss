@@ -21,6 +21,8 @@ div.cashContainer {
     // @include flex-direction(column);
     // @include justify-content(space-between);
     .cashArea {
+      // border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
       .am-list-item {
         @include rect(100%, 0.51rem);
         background: #fff url("https://s1.mi.com/m/images/m/bd1.png") 0 0
@@ -36,11 +38,13 @@ div.cashContainer {
     .cashKind {
       @include margin(0.1rem 0);
       @include rect(100%, auto);
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
       div.icon-arrow-down {
         transform: rotate(360deg);
       }
       .cashkind1 {
-        transition: all 0.2s;
+        transition: all 0.1s;
         @include rect(100%, 86%);
         @include overflow();
         .am-list-item {
@@ -95,6 +99,8 @@ div.cashContainer {
     }
     .cashBill {
       @include rect(100%, auto);
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
       .cashT {
         .am-list-item {
           .am-list-line {
@@ -180,6 +186,18 @@ div.cashContainer {
       .cashB {
         .am-accordion-header {
           @include font-size(0.13rem);
+          .cashQ{
+            .cashY{
+              @include color(#bdbdbd);
+              @include font-size(.10rem);
+              @include margin(0 5px 0 0);
+              float: right;
+              em{
+                @include color(#f60);
+                @include font-size(.10rem);
+              }
+            }
+          }
         }
         .am-list-item {
           @include background-color(#f5f5f5);
@@ -215,6 +233,41 @@ div.cashContainer {
             }
           }
         }
+      }
+      
+    }
+    .cashGood{
+      @include margin(0.1rem 0);
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      .am-list-item{
+        @include rect(auto, .6rem);
+        .am-list-thumb{
+          img{
+            @include rect(.33rem, .33rem)
+          }
+        }
+        .am-list-line{
+          .am-list-content{
+            @include font-size(.14rem)
+          }
+        }
+        .am-list-extra{
+          @include font-size(.14rem);
+          @include color(#000);
+          font-weight: bolder;
+        }
+      }
+    }
+    .cashInfo{
+      @include background-color(#fff);
+      @include padding(.1rem .1rem .1rem .15rem);
+      @include margin(.1rem 0);
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      p{
+        @include font-size(.13rem);
+        @include font-weight(bolder);
       }
     }
     ul.listBox {
@@ -286,10 +339,19 @@ div.cashContainer {
       @include justify-content();
     }
     div.sum {
+      @include flexbox();
+      @include align-items();
+      @include justify-content();
+      @include flex-wrap(nowrap);
       @include background-color(#fff);
       p {
+        // @include ellipsis(95%, 1);
+        // @include rect(50%, auto);
+        // @include flex-wrap(nowrap);
         @include text-color(#ff4d14);
         @include font-size(0.18rem);
+        white-space: nowrap;
+
       }
       span {
         @include text-color(#ff4d14);

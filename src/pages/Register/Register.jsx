@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import { List, InputItem, Toast } from 'antd-mobile';
 import { WingBlank, InputItem, Toast, Button } from 'antd-mobile';
 import action from '@/store/register/action'
+import loginaction from '@/store/login/action'
 import store from '@/store'
 import './Register'
 class Com extends Component {
@@ -89,12 +90,17 @@ class Com extends Component {
     });
   }
   registerCheck () {
-    if (this.state.phone.length !== 0 && this.state.password.length !==0 && this.state.username.length !==0){
+    if (this.state.phone.length !== 0 && this.state.password.length !==0 && this.state.username.length !==0 && this.state.hasError === false && this.state.hasPhoneError === false && this.state.hasPasswordError === false){
       store.dispatch(action.registerCheck(this.state.phone,this.state.username, this.state.password)).then(data => {
         if (data === 0){
           Toast.fail('用户已注册', 1)
         } else if(data === 1) {
-          Toast.success('注册成功',1)
+          Toast.success('注册成功',1);
+          let timer = setTimeout(() => {
+            this.props.history.push('/home');
+            clearTimeout(timer)
+          }, 1000)
+          store.dispatch(loginaction.loginCheck(this.state.phone, this.state.password))
         } else {
           Toast.fail('注册失败', 1)
         }
