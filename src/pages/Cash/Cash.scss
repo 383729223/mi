@@ -1,319 +1,314 @@
-@import '@/qunar/reset.scss';
+@import "@/qunar/reset.scss";
 header.cashHeader {
-    @include rect(100%, 0.48rem);
-    @include background-color(#F2F2F2);
-    .am-navbar-title {
-        @include text-color(#666);
-        @include font-size(0.17rem);
-    }
+  @include rect(100%, 0.48rem);
+  @include background-color(#f2f2f2);
+  .am-navbar-title {
+    @include text-color(#666);
+    @include font-size(0.17rem);
+  }
 }
-
 div.cashContainer {
+  @include flex();
+  @include rect(100%, auto);
+  @include flexbox();
+  @include align-items();
+  @include flex-direction(column);
+  div.cashContent {
+    @include overflow();
     @include flex();
     @include rect(100%, auto);
-    @include flexbox();
-    @include align-items();
-    @include flex-direction(column);
-    div.cashContent {
+    // @include flexbox();
+    // @include flex-direction(column);
+    // @include justify-content(space-between);
+    .cashArea {
+      .am-list-item {
+        @include rect(100%, 0.51rem);
+        background: #fff url("https://s1.mi.com/m/images/m/bd1.png") 0 0
+          repeat-x;
+        background-size: 0.52rem 0.03rem;
+        .am-list-line {
+          .am-list-content {
+            @include font-size(0.15rem);
+          }
+        }
+      }
+    }
+    .cashKind {
+      @include margin(0.1rem 0);
+      @include rect(100%, auto);
+      div.icon-arrow-down {
+        transform: rotate(360deg);
+      }
+      .cashkind1 {
+        transition: all 0.2s;
+        @include rect(100%, 86%);
         @include overflow();
-        @include flex();
-        @include rect(100%, auto);
-        // @include flexbox();
-        // @include flex-direction(column);
-        // @include justify-content(space-between);
-        .cashArea{
-            .am-list-item{
-                @include rect(100%, .51rem);
-                background: #fff url('https://s1.mi.com/m/images/m/bd1.png') 0 0 repeat-x;
-                background-size: .52rem .03rem;
-                .am-list-line{
-                    .am-list-content{
-                        @include font-size(.15rem);
-                    }
-                }
+        .am-list-item {
+          .am-list-line {
+            @include padding(0 0 1px 0);
+            border-bottom: 1px solid #eee;
+            .am-list-content {
+              @include font-size(0.15rem);
             }
+            .am-list-extra {
+              .am-checkbox-agree {
+                @include margin(0);
+                .am-checkbox {
+                  right: 10%;
+                  left: auto;
+                  .am-checkbox-inner {
+                    top: 0px;
+                  }
+                }
+                .am-checkbox-checked {
+                  .am-checkbox-inner {
+                    top: 0px;
+                    border-color: #ff5722;
+                    background: #ff5722;
+                  }
+                }
+              }
+            }
+          }
         }
-        .cashKind{
-            @include margin(.1rem 0);
-            @include rect(100%, auto);
-            div.icon-arrow-down{
-                transform: rotate(360deg)
+      }
+      .cashelse {
+        .am-list-line {
+          .am-list-content {
+            @include text-align(center);
+            @include flexbox();
+            @include justify-content(center);
+            @include align-items(center);
+            @include font-size(0.13rem);
+            @include color(#bdbdbd);
+            .image-icons {
+              @include rect(0.2rem, 0.2rem);
+              @include padding(1px 0 0 0);
+              transform: rotate(180deg);
+              display: inline-block;
+              background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAABlBMVEX///+9vb18/6H5AAAAAXRSTlMAQObYZgAAAF9JREFUeNrtzCESwDAMxMD4/59umIBJJ6JalLo3OkmS5Ie55IbRyAmrUQtmlxisoeswtR3GurPn+4crcXYljq7EyZU4uBKfrsSHK/F0JR6mhCPYDmwHdKzVUaWTJElefOyLAQtGqMZ7AAAAAElFTkSuQmCC");
+              background-size: cover;
             }
-            .cashkind1{
-                transition: all .2s;
-                @include rect(100%, 86%);
-                @include overflow();
-            .am-list-item{
-                .am-list-line{
-                    @include padding(0 0 1px 0);
-                    border-bottom: 1px solid #eee;
-                    .am-list-content{
-                        @include font-size(.15rem)
-                    }
-                    .am-list-extra{
-                        .am-checkbox-agree{
-                            @include margin(0);
-                            .am-checkbox{
-                                right: 10%;
-                                left:auto;
-                                .am-checkbox-inner{
-                                    top: 0px;
-                                    
-                                }
-                            }
-                            .am-checkbox-checked{
-                                .am-checkbox-inner{
-                                    top: 0px;
-                                    border-color: #FF5722;
-                                    background: #FF5722;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+          }
         }
-            .cashelse{
-                .am-list-line{
-                    .am-list-content{
-                        @include text-align(center);
-                        @include flexbox();
-                        @include justify-content(center);
-                        @include align-items(center);
-                        @include font-size(.13rem);
-                        @include color(#bdbdbd);
-                        .image-icons{
-                            @include rect(.2rem, .2rem);
-                            @include padding(1px 0 0 0);
-                            transform: rotate(180deg);
-                            display: inline-block;
-                            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAABlBMVEX///+9vb18/6H5AAAAAXRSTlMAQObYZgAAAF9JREFUeNrtzCESwDAMxMD4/59umIBJJ6JalLo3OkmS5Ie55IbRyAmrUQtmlxisoeswtR3GurPn+4crcXYljq7EyZU4uBKfrsSHK/F0JR6mhCPYDmwHdKzVUaWTJElefOyLAQtGqMZ7AAAAAElFTkSuQmCC');
-                            background-size: cover;
-                        }
-                    }
-                }
+      }
+    }
+    .cashBill {
+      @include rect(100%, auto);
+      .cashT {
+        .am-list-item {
+          .am-list-line {
+            .am-list-content {
+              @include font-size(0.13rem);
+              // font-weight: bolder;
             }
-       
+            .am-list-extra {
+              @include font-size(0.13rem);
+            }
+          }
         }
-        .cashBill{
-            @include rect(100%, auto);
-            .cashT{
-                .am-list-item{
-                    .am-list-line{
-                        .am-list-content{
-                            @include font-size(.13rem);
-                            // font-weight: bolder;
-                        }
-                        .am-list-extra{
-                            @include font-size(.13rem);
-                        }
-                    }
-                }
+      }
+      .cashM {
+        .am-accordion {
+          .am-accordion-item {
+            .am-accordion-header {
+              @include font-size(0.13rem);
+              // font-weight: bolder;
             }
-            .cashM{
-                .am-accordion{
-                    .am-accordion-item{
-                    .am-accordion-header{
-                        @include font-size(.13rem);
-                        // font-weight: bolder;
-                    }
-                   .am-accordion-content{
-                       .am-accordion-content-box{
-                           .am-list{
-                           .am-list-body{
-                               
-                            .am-list-item{
-                                @include background-color(#f5f5f5);
-                                .am-list-line{
-                                    .am-list-content{
-                                        white-space: pre-wrap;
-                                        @include font-size(.13rem);
-                                        @include color(#6a6a6a);
-                                       
-                                        // font-weight: bolder;
-                                        p{
-                                            @include padding(.1rem 0);
-                                        }
-                                        .ui-input{
-                                            @include background-color(#fff);
-                                            border: 1px solid #e0e0e0;
-                                            .inp{
-                                                padding: .1rem 0 .1rem .2rem;
-                                                width: 260px;
-                                                box-sizing: border-box;
-                                                border: 0;
-                                                line-height: 20px;
-                                                margin: 0;
-                                            }
-                                           }
-                                           .fapiao-desc{
-                                               @include margin(.3rem 0 0 0);
-                                               p{
-                                                   @include color(#bdbdbd);
-                                                   @include font-size(.10rem);
-                                                   padding: 0;
-                                            
-                                               }
-                                           }
-                                        span{
-                                            white-space:wrap
-                                        }
-                                        .am-button{
-                                            @include background-color(#fff);
-                                            @include color(#3c3c3c);
-                                            @include rect(.93rem, .41rem);
-                                            @include font-size(.13rem);
-                                        }
-                                        .am-button-ghost::before{
-                                            // @include rect(.96rem, .44rem);
-                                            border: 1px solid #f60;
-                                        }
-                                    }
-                                    .am-list-extra{
-                                        @include font-size(.13rem);
-                                    }
-                                }
-                            }
-                        }
-            }
-            }
-        } 
-            }
-            }
-            }
-            .cashB{
-                .am-accordion-header{
-                    @include font-size(.13rem)
-                }
-                .am-list-item{
-                    @include background-color(#f5f5f5);
-                    p{
-                        @include color(#6a6a6a);
-                        @include font-size(.12rem);
-                        @include padding(.1rem 0)
-                    }
-                    .ui-box-flex{
-                        // @include background-color(#fff);
-                        // border: 1px solid #e0e0e0;
-                        @include padding(0 0 .1rem 0);
-                        input{
+            .am-accordion-content {
+              .am-accordion-content-box {
+                .am-list {
+                  .am-list-body {
+                    .am-list-item {
+                      @include background-color(#f5f5f5);
+                      .am-list-line {
+                        .am-list-content {
+                          white-space: pre-wrap;
+                          @include font-size(0.13rem);
+                          @include color(#6a6a6a);
+
+                          // font-weight: bolder;
+                          p {
+                            @include padding(0.1rem 0);
+                          }
+                          .ui-input {
+                            @include background-color(#fff);
                             border: 1px solid #e0e0e0;
-                            font-size:13px;
-                            padding: .05rem 0 .1rem .2rem;
-                            width: 270px;
-                            box-sizing: border-box;
-                            // border: 0;
-                            line-height: 10px;
-                            margin: 0;
-                        }
-                        a{  
+                            .inp {
+                              padding: 0.1rem 0 0.1rem 0.2rem;
+                              width: 260px;
+                              box-sizing: border-box;
+                              border: 0;
+                              line-height: 20px;
+                              margin: 0;
+                            }
+                          }
+                          .fapiao-desc {
+                            @include margin(0.3rem 0 0 0);
+                            p {
+                              @include color(#bdbdbd);
+                              @include font-size(0.1rem);
+                              padding: 0;
+                            }
+                          }
+                          span {
+                            white-space: wrap;
+                          }
+                          .am-button {
                             @include background-color(#fff);
                             @include color(#3c3c3c);
-                            @include rect(58px, 34px);
-                            margin-left: 10px;
-
-                            font-size: 13px;
-                            border: 1px solid #e0e0e0;
-                            padding: .07rem 0.5rem .1rem 0.2rem;
-                            text-align: center
+                            @include rect(0.93rem, 0.41rem);
+                            @include font-size(0.13rem);
+                          }
+                          .am-button-ghost::before {
+                            // @include rect(.96rem, .44rem);
+                            border: 1px solid #f60;
+                          }
                         }
+                        .am-list-extra {
+                          @include font-size(0.13rem);
+                        }
+                      }
                     }
+                  }
                 }
-                
+              }
             }
+          }
         }
-        ul.listBox {
+      }
+      .cashB {
+        .am-accordion-header {
+          @include font-size(0.13rem);
+        }
+        .am-list-item {
+          @include background-color(#f5f5f5);
+          p {
+            @include color(#6a6a6a);
+            @include font-size(0.12rem);
+            @include padding(0.1rem 0);
+          }
+          .ui-box-flex {
+            // @include background-color(#fff);
+            // border: 1px solid #e0e0e0;
+            @include padding(0 0 0.1rem 0);
+            input {
+              border: 1px solid #e0e0e0;
+              font-size: 13px;
+              padding: 0.05rem 0 0.1rem 0.2rem;
+              width: 270px;
+              box-sizing: border-box;
+              // border: 0;
+              line-height: 10px;
+              margin: 0;
+            }
+            a {
+              @include background-color(#fff);
+              @include color(#3c3c3c);
+              @include rect(58px, 34px);
+              margin-left: 10px;
+
+              font-size: 13px;
+              border: 1px solid #e0e0e0;
+              padding: 0.07rem 0.5rem 0.1rem 0.2rem;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    ul.listBox {
+      @include rect(100%, auto);
+      @include flexbox();
+      @include flex-direction(column);
+      @include align-items();
+      @include justify-content(flex-start);
+      li {
+        @include padding(0.04rem 0 0.04rem 0);
+        @include background-color(#fff);
+        @include rect(100%, 1rem);
+        @include flexbox();
+        @include justify-content();
+        @include align-items();
+        .checkBtn {
+          @include background-color(#fff);
+          @include rect(0.5rem, 100%);
+        }
+        .listImg {
+          @include rect(auto, 100%);
+          img {
+            @include rect(auto, 100%);
+          }
+        }
+        .listInfo {
+          @include flex();
+          @include rect(auto, 100%);
+          @include flexbox();
+          @include flex-direction(column);
+          p {
+            @include flex(2);
+            @include rect(100%, auto);
+            @include ellipsis(80%, 2);
+            @include text-color(#333);
+            @include font-size(0.14rem);
+            // @include line-height(0.24rem)
+          }
+          em {
+            @include flex(1);
+            @include rect(100%, auto);
+            @include ellipsis(90%, 1);
+            @include text-color(#666);
+          }
+          .countBox {
+            @include flex(1);
             @include rect(100%, auto);
             @include flexbox();
-            @include flex-direction(column);
+            @include justify-content(space-between);
             @include align-items();
-            @include justify-content(flex-start);
-            li {
-                @include padding(0.04rem 0 0.04rem 0);
-                @include background-color(#fff);
-                @include rect(100%, 1rem);
-                @include flexbox();
-                @include justify-content();
-                @include align-items();
-                .checkBtn {
-                    @include background-color(#fff);
-                    @include rect(0.5rem, 100%);
-                }
-                .listImg {
-                    @include rect(auto, 100%);
-                    img {
-                        @include rect(auto, 100%);
-                    }
-                }
-                .listInfo {
-                    @include flex();
-                    @include rect(auto, 100%);
-                    @include flexbox();
-                    @include flex-direction(column);
-                    p {
-                        @include flex(2);
-                        @include rect(100%, auto);
-                        @include ellipsis(80%, 2);
-                        @include text-color(#333);
-                        @include font-size(0.14rem);
-                        // @include line-height(0.24rem)
-                    }
-                    em {
-                        @include flex(1);
-                        @include rect(100%, auto);
-                        @include ellipsis(90%, 1);
-                        @include text-color(#666);
-                    }
-                    .countBox {
-                        @include flex(1);
-                        @include rect(100%, auto);
-                        @include flexbox();
-                        @include justify-content(space-between);
-                        @include align-items();
-                        .icon-lajitong {
-                            @include font-size(0.24rem);
-                            @include margin(0 0.08rem 0 0);
-                        }
-                    }
-                }
+            .icon-lajitong {
+              @include font-size(0.24rem);
+              @include margin(0 0.08rem 0 0);
             }
+          }
         }
+      }
     }
-    footer.cashFooter {
-        @include rect(100%, 0.6rem);
-        @include flexbox();
-        @include align-items();
-        .cashFooterBox {
-            @include flex();
-            @include rect(auto, 100%);
-            @include flexbox();
-            @include align-items();
-            @include justify-content();
-        }
-        div.sum {
-            @include background-color(#fff);
-            p{
-                @include text-color(#ff4d14);
-                @include font-size(.18rem)
-            }
-            span {
-                @include text-color(#ff4d14);
-                @include font-weight();
-                i {
-                    @include text-color(#ff4d14);
-                    @include font-size(.18rem);
-                    @include font-weight(bold);
-                }
-            }
-        }
-        a.keepOn {
-            @include font-size(0.2rem);
-            @include text-color(#666);
-        }
-        div.compute {
-            @include text-color(#fff);
-            @include font-size(0.2rem);
-            @include background-color(#ff5722);
-        }
+  }
+  footer.cashFooter {
+    @include rect(100%, 0.6rem);
+    @include flexbox();
+    @include align-items();
+    .cashFooterBox {
+      @include flex();
+      @include rect(auto, 100%);
+      @include flexbox();
+      @include align-items();
+      @include justify-content();
     }
+    div.sum {
+      @include background-color(#fff);
+      p {
+        @include text-color(#ff4d14);
+        @include font-size(0.18rem);
+      }
+      span {
+        @include text-color(#ff4d14);
+        @include font-weight();
+        i {
+          @include text-color(#ff4d14);
+          @include font-size(0.18rem);
+          @include font-weight(bold);
+        }
+      }
+    }
+    a.keepOn {
+      @include font-size(0.2rem);
+      @include text-color(#666);
+    }
+    div.compute {
+      @include text-color(#fff);
+      @include font-size(0.2rem);
+      @include background-color(#ff5722);
+    }
+  }
 }

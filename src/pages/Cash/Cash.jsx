@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Api from '@/api/detail'
+// import Api from '@/api/detail'
 import './Cash.scss'
-import { List, Checkbox, InputItem, Carousel, Badge,Button, Accordion } from 'antd-mobile';
-import { Link } from 'react-router-dom';
-import store from '@/store'
-import action from '@/store/cart/action'
+import { List, Checkbox, Button, Accordion } from 'antd-mobile';
+// import { Link } from 'react-router-dom';
+// import store from '@/store'
+// import action from '@/store/cart/action'
+// InputItem, Carousel, Badge,
 const Item = List.Item;
 const AgreeItem = Checkbox.AgreeItem;
 class Com extends Component {
@@ -164,13 +165,16 @@ class Com extends Component {
                           <input  type="text" placeholder="请输入优惠券码"/>
                         
                         
-                        <a href="1" class="ui-input-btn">确定</a>
+                        <a href="1" className="ui-input-btn">确定</a>
                         </div>
                     </List.Item>
                   </List>
                 </Accordion.Panel>
               </Accordion>
             </div>
+          </div>
+					<div className='cashGood'>
+            
           </div>
         </div>
         <footer className="cashFooter">

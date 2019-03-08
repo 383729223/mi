@@ -48,6 +48,7 @@ class Com extends Component {
           <Banner banner={this.state.bannerData} />
           <Lists list={dat} />
         </div>)
+
         this.setState({
           tabHtml:newData
         })
