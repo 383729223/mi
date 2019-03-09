@@ -16,6 +16,16 @@ const reducer = (state = {
         return{
             data: data,
         }
+        case 'USERNAME':
+        return{
+            data: data.editCode,
+            username: data.username,
+            tel: data.tel
+        }
+        case 'PASSWORD': // 当 state 变化时需要返回全新的对象，而不是修改传入的参数。
+          return {
+            data: data,
+          }
       default:
           return state;
   }

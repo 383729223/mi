@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import { List } from 'antd-mobile';
+import { List, Modal, Toast } from 'antd-mobile';
 import store from '@/store';
+import action from '@/store/login/action'
 import './User'
 const Item = List.Item;
+const prompt = Modal.prompt;
 class Com extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      username: ''
+      username: '',
+      modal: ''
     }
   }
   componentDidMount () {
@@ -27,18 +30,90 @@ class Com extends Component {
       })
     }
   }
+  showModal = key => (e) => {
+    if(this.state.username !== '登录/注册'){
+      e.preventDefault(); // 修复 Android 上点击穿透
+      this.setState({
+        [key]: true,
+      });
+    }
+  }
+  onClose = key => () => {
+    this.setState({
+      [key]: false,
+    });
+  }
   goLogin () {
     this.props.history.push('/registerapp/login')
   }
   goOut () {
 
   }
+  opera (index, key) {
+    if(this.state.username !== '登录/注册'){
+      if(index === 0){
+       let a= () => prompt(
+          '用户名',
+          '请输入新的用户名',
+          [
+            { text: '取消' },
+            { text: '确认修改', onPress: value => new Promise((resolve) => {
+              Toast.info('修改成功', 1);
+              let timer = setTimeout(() => {
+                resolve();
+                this.setState({
+                  username: value
+                })
+                store.dispatch(action.editName(store.getState().loginStore.tel,value))
+                clearTimeout(timer)
+              }, 1000); })}
+          ],
+          'default', this.state.username,
+        )
+        a();
+        this.setState({
+          [key]: false
+        })
+      } else if (index === 1) {
+        let a= () => prompt(
+            '密码',
+            '请输入新密码',
+            [
+              { text: '取消' },
+              { text: '确认修改', onPress: password => new Promise((resolve) => {
+                Toast.info('修改成功,请重新登录', 1);
+                let timer = setTimeout(() => {
+                  resolve();
+                  
+                  store.dispatch(action.editPassword(store.getState().loginStore.tel, password))
+                  this.props.history.push('/registerapp/login')
+                  clearTimeout(timer)
+                }, 1000); })}
+            ],
+            'secure-text'
+          )
+          a();
+          this.setState({
+            [key]: false
+          })
+      } else {
+        store.dispatch(action.loginCheck('', ''))
+        document.querySelector('.userLogin').style.display = ''
+        document.querySelector('.userName').style.display = 'none'
+        this.setState({
+          username: '登录/注册',
+          [key]: false
+        })
+      }
+
+    }
+  }
   render () {
     return (
       <div className = "container">
         <header className="userHeader">
           <div className='userLogo'>
-            <div className='userImg'>
+            <div className='userImg' onClick = {this.showModal('modal2').bind(this)}>
               <img src="https://m.mi.com/static/img/avatar.76a75b8f17.png" alt=""/>
             </div>
             <div className='userLogin' onClick={this.goLogin.bind(this)}>{this.state.username}</div>
@@ -134,6 +209,21 @@ class Com extends Component {
             </li>
           </ul>
         </div>
+        {/* <WhiteSpace /> */}
+        <Modal
+        className='usermodal'
+          popup
+          visible={this.state.modal2}
+          onClose={this.onClose('modal2')}
+          animationType="slide-up"
+        >
+          <List className="popup-list">
+            {['修改资料', '修改密码', '退出当前账号'].map((i, index) => (
+              <List.Item key={index} onClick={this.opera.bind(this, index, 'modal2')}>{i}</List.Item>
+            ))}
+            <List.Item onClick={this.onClose('modal2')} className='userclose'>取消</List.Item>
+          </List>
+        </Modal>
       </div>
     )
   }
