@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './Cash.scss'
 import { List, Checkbox, Button, Accordion } from 'antd-mobile';
 // import { Link } from 'react-router-dom';
-import store from '@/store'
+// import store from '@/store'
 // import action from '@/store/cart/action'
 // InputItem, Carousel, Badge,
 const Item = List.Item;
@@ -25,10 +25,11 @@ class Com extends Component {
     this.setState({
       cartList:JSON.parse(localStorage.getItem('buyCart'))
     })
-    if(store.getState().loginStore.tel===""){
-      // console.log(this.props)
-      this.props.history.push('/registerapp/login')
-    }
+    console.log(document.querySelectorAll('.am-checkbox')[0].className);
+    // if(store.getState().loginStore.tel===""){
+    //   // console.log(this.props)
+    //   this.props.history.push('/registerapp/login')
+    // }
   }
   show () {
     let cashkind1 = document.querySelector('.cashkind1');
@@ -52,9 +53,17 @@ class Com extends Component {
 
     }
   }
-  check () {
-    console.log(document.querySelectorAll('.am-checkbox'));
-    document.querySelectorAll('.am-checkbox').className='am-checkbox am-checkbox-checked'
+  check (index) {
+    
+    document.querySelectorAll('.am-checkbox').forEach((item, index) => {
+      item.className='am-checkbox'
+    })
+    // document.querySelectorAll('.am-checkbox')[index].className='am-checkbox am-checkbox-checked'
+    console.log(document.querySelectorAll('.am-checkbox')[index].className)
+    if(document.querySelectorAll('.am-checkbox')[index].className !== 'am-checkbox am-checkbox-checked') {
+      console.log('ok')
+      document.querySelectorAll('.am-checkbox')[index].className ='am-checkbox am-checkbox-checked'
+    }
   }
   render () {
     let html = [];
@@ -82,7 +91,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_wx.png"
               extra={
-                <AgreeItem key='' onChange={this.check.bind(this)} defaultChecked>
+                <AgreeItem key='0' onChange={this.check.bind(this, 0)} defaultChecked>
                 </AgreeItem>
               }
               onClick=''
@@ -90,7 +99,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_zfb2.png"
               extra={
-                <AgreeItem key='' onChange={this.check.bind(this)}>
+                <AgreeItem key=' 1' onChange={this.check.bind(this, 1)}>
                 </AgreeItem>
               }
               onClick=''
@@ -98,7 +107,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/micash_wap.png"
               extra={
-                <AgreeItem key='' onChange=''>
+                <AgreeItem key='2' onChange={this.check.bind(this, 2)}>
                 </AgreeItem>
               }
               onClick=''
@@ -106,7 +115,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_yl1.png"
               extra={
-                <AgreeItem key='' onChange=''>
+                <AgreeItem key='3' onChange={this.check.bind(this, 3)}>
                 </AgreeItem>
               }
               onClick=''
@@ -114,7 +123,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_yzf.png"
               extra={
-                <AgreeItem key='' onChange=''>
+                <AgreeItem key='4' onChange={this.check.bind(this, 4)}>
                 </AgreeItem>
               }
               onClick=''
@@ -122,7 +131,7 @@ class Com extends Component {
             <Item
               thumb="https://s1.mi.com/m/images/m/pay_mifinanceinstal.png"
               extra={
-                <AgreeItem key='' onChange=''>
+                <AgreeItem key='5' onChange={this.check.bind(this, 5)}>
                 </AgreeItem>
               }
               onClick=''
@@ -226,7 +235,7 @@ class Com extends Component {
                 <p>共&nbsp;{count}件&nbsp;合计：</p>
                 <span><i>{price}元</i></span>
               </div>
-              <div className="compute cashFooterBox" onClick=''>去付款</div>
+              <div className="compute cashFooterBox">去付款</div>
         </footer>
       </div>
 

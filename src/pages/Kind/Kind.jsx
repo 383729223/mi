@@ -15,6 +15,7 @@ class Com extends Component {
       index:'0'
     }
   }
+    
   componentDidMount() {
     store.dispatch(action.requestData()).then(data => {
       this.setState({
@@ -22,11 +23,71 @@ class Com extends Component {
       })
     });
     store.dispatch(action.requestDatas()).then(data => {
+      
       this.setState({
         list: data
       })
     });
-    this.showToast()
+    this.setState({
+      num: 1
+    })
+    window.addEventListener('scroll', this.onListScroll, true);
+    
+    // document.querySelector('.kind_ul').addEventListener('scroll', ()=> {
+      // console.log('ok')
+    // })
+    this.showToast();
+  }
+  
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.onListScroll, true);
+  }
+  onListScroll(e){
+    let underline = document.querySelector('.am-tabs-default-bar-underline');
+    let ele = document.querySelector('.am-tabs-default-bar-content').children
+    if (e.target.scrollTop >= 0 && e.target.scrollTop <= 700) {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 0 + '%';
+      ele[0].style.color='rgb(251, 125, 52)'
+    } else if (e.target.scrollTop > 700 && e.target.scrollTop <= 1133) {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 1 + '%';
+      ele[1].style.color='rgb(251, 125, 52)'
+    } else if (e.target.scrollTop > 1133 && e.target.scrollTop <= 1550) {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 2 + '%';
+      ele[2].style.color='rgb(251, 125, 52)'
+    } else if (e.target.scrollTop > 1550 && e.target.scrollTop <= 2076) {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 3 + '%';
+      ele[3].style.color='rgb(251, 125, 52)'
+    } else if (e.target.scrollTop > 2076 && e.target.scrollTop <= 2496) {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 4 + '%';
+      ele[4].style.color='rgb(251, 125, 52)'
+    } else if (e.target.scrollTop > 2496 && e.target.scrollTop <= 2817) {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 5 + '%';
+      ele[5].style.color='rgb(251, 125, 52)'
+    } else {
+      for (let i = 0; i < 7; i++){
+        ele[i].style.color = '#3c3c3c';
+      }
+      underline.style.top = 20 * 6 + '%';
+      ele[6].style.color='rgb(251, 125, 52)'
+    }
   }
   showToast = () => {
     this.setState({ animating: !this.state.animating });
@@ -113,7 +174,8 @@ class Com extends Component {
               // usePaged = {false}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'auto', backgroundColor: '#fff' }}>
-                <ul className='kind_ul'>
+                <ul className='kind_ul'  ref={(scrollItem) => {this.scrollItem = scrollItem;}}
+        onScroll={this.onListScroll}>
                 {
                   html
                 }</ul>
