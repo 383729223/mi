@@ -11,11 +11,11 @@ module.exports = function(app) {
         })
     );
     app.use(
-        proxy("/uqmei", {
+        proxy("/mi", {
             target: "http://39.98.41.185/api",
             changeOrigin: true,
             pathRewrite: { // 自己配置代理必须加这句话
-                '^/uqmei': ''
+                '^/mi': ''
             }
         })
     );

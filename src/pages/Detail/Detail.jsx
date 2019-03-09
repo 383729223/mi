@@ -81,7 +81,7 @@ class Com extends Component {
   render () {
     let html=[]
     if(this.state.msg.length===0){
-      html=<h3>Loading....</h3>
+      html=<div style={{width:"100%",textAlign:"center",marginTop:"40px"}}><img src="http://www.sucaijishi.com/uploadfile/2014/0524/20140524124233131.gif" alt="" width="20%" height="auto"/></div>
       
     }else{
       html.push(

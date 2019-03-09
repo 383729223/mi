@@ -57,7 +57,7 @@ class Com extends Component {
         })
       })
       
-      setTimeout(()=>{
+      let timer2=setTimeout(()=>{
         // console.log(newArr)
         if(newArr[0][0].type==="手机"){
           // console.log(1)
@@ -78,7 +78,8 @@ class Com extends Component {
             html:html
           })
         }
-      },500)
+        clearTimeout(timer2)
+      },700)
       
       this.setState({
         tabHtml:newData
@@ -123,6 +124,12 @@ class Com extends Component {
       tabs.push({"title":item,"sub":index})
     })
 
+    let homeHtml=""
+    if(this.state.html===""){
+      homeHtml=(<div style={{width:"100%",textAlign:"center",marginTop:"40px"}}><img src="http://www.sucaijishi.com/uploadfile/2014/0524/20140524124233131.gif" alt="" width="20%" height="auto"/></div>)
+    }else{
+      homeHtml=this.state.html
+    }
 
     return (
       <div className = "container">
@@ -172,14 +179,8 @@ class Com extends Component {
                 <ShowList list={this.state.listData} />
             </div> */}
             
-            {this.state.html}
-            {/* {this.state.typeDatas.map((item,index)=>(
-              <div key={index}>
-                <Banner banner={this.state.bannerData} />
-                <Lists list={item.data} />
-              </div>
-            ))} */}
-
+            {/* {this.state.html} */}
+            {homeHtml}
             
         </Tabs>
       </div>
