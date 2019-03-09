@@ -108,3 +108,24 @@
     }
   }
 }
+.usermodal{
+  // #am-modal-container-1552112293838{
+    .am-modal-content{
+      .am-list-body{
+        @include background-color(#F8F8F8);
+      
+      .am-list-item{
+        @include padding(0);
+        .am-list-content{
+          @include text-align(center);
+        }
+      }
+    
+      .userclose{
+        @include margin(10px 0 0 0);
+        // border-top: 1PX solid #ddd;
+      }
+    }
+    }
+  // }
+}
