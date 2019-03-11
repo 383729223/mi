@@ -22,7 +22,7 @@ class Com extends Component {
       })
     });
     Api.requestData('/mi/product/searchId?goodsId='+id).then(data=>{
-      console.log(data)
+      // console.log(data)
       this.setState({
         showImg:data[0].imgsrc
       })
@@ -89,8 +89,8 @@ class Com extends Component {
         <Carousel
           autoplay={true}
           infinite
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => console.log('slide to', index)}
+          // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          // afterChange={index => console.log('slide to', index)}
         >
               {this.state.msg[0].imgsrcArr.map((val,index) => (
                 <a
