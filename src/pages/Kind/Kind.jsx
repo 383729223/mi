@@ -43,39 +43,41 @@ class Com extends Component {
     window.removeEventListener('scroll', this.onListScroll, true);
   }
   onListScroll(e){
-    let underline = document.querySelector('.am-tabs-default-bar-underline');
-    let ele = document.querySelector('.am-tabs-default-bar-content').children
-    if (e.target.scrollTop >= 0 && e.target.scrollTop <= 700) {
+    var underline = document.querySelector('.am-tabs-default-bar-underline');
+    let ele = document.querySelector('.am-tabs-default-bar-content').children;
+    let kindimg = document.querySelectorAll('.kind_imgs');
+    // console.log(document.querySelectorAll('.kind_imgs')[1].offsetTop)
+    if (e.target.scrollTop >= 0 && e.target.scrollTop <= kindimg[1].offsetTop-1) {
       for (let i = 0; i < 7; i++){
         ele[i].style.color = '#3c3c3c';
       }
       underline.style.top = 20 * 0 + '%';
       ele[0].style.color='rgb(251, 125, 52)'
-    } else if (e.target.scrollTop > 700 && e.target.scrollTop <= 1133) {
+    } else if (e.target.scrollTop > kindimg[1].offsetTop-1 && e.target.scrollTop <= kindimg[2].offsetTop-1) {
       for (let i = 0; i < 7; i++){
         ele[i].style.color = '#3c3c3c';
       }
       underline.style.top = 20 * 1 + '%';
       ele[1].style.color='rgb(251, 125, 52)'
-    } else if (e.target.scrollTop > 1133 && e.target.scrollTop <= 1550) {
+    } else if (e.target.scrollTop > kindimg[2].offsetTop-1 && e.target.scrollTop <= kindimg[3].offsetTop-1) {
       for (let i = 0; i < 7; i++){
         ele[i].style.color = '#3c3c3c';
       }
       underline.style.top = 20 * 2 + '%';
       ele[2].style.color='rgb(251, 125, 52)'
-    } else if (e.target.scrollTop > 1550 && e.target.scrollTop <= 2076) {
+    } else if (e.target.scrollTop > kindimg[3].offsetTop-1 && e.target.scrollTop <= kindimg[4].offsetTop-1) {
       for (let i = 0; i < 7; i++){
         ele[i].style.color = '#3c3c3c';
       }
       underline.style.top = 20 * 3 + '%';
       ele[3].style.color='rgb(251, 125, 52)'
-    } else if (e.target.scrollTop > 2076 && e.target.scrollTop <= 2496) {
+    } else if (e.target.scrollTop > kindimg[4].offsetTop-1 && e.target.scrollTop <= kindimg[5].offsetTop-1) {
       for (let i = 0; i < 7; i++){
         ele[i].style.color = '#3c3c3c';
       }
       underline.style.top = 20 * 4 + '%';
       ele[4].style.color='rgb(251, 125, 52)'
-    } else if (e.target.scrollTop > 2496 && e.target.scrollTop <= 2817) {
+    } else if (e.target.scrollTop > kindimg[5].offsetTop-1 && e.target.scrollTop <= kindimg[6].offsetTop-1) {
       for (let i = 0; i < 7; i++){
         ele[i].style.color = '#3c3c3c';
       }
@@ -98,12 +100,12 @@ class Com extends Component {
   }
   scrollToAnchor = (anchorName, e, e1) => {
     // console.log(anchorName)
-    // console.log(e)
+    // console.log(e1)
     if (e1+'x') {
         let anchorElement = document.getElementById(e1+'x');
         // console.log(anchorElement)
         if(anchorElement) { anchorElement.scrollIntoView(); }
-        let underline = document.querySelector('.am-tabs-default-bar-underline');
+        var underline = document.querySelector('.am-tabs-default-bar-underline');
         let ele = document.querySelector('.am-tabs-default-bar-content').children
         for (let i = 0; i < 7; i++){
           ele[i].style.color = '#3c3c3c';

@@ -42,20 +42,22 @@ div.kindContent.content#kindId{
       .am-tabs-tab-bar-wrap{
         @include rect(auto, 100%);
       .am-tabs-default-bar{
-        @include flexbox();
-        @include flex-direction(column);
+        @include rect(auto, 100%);
+        // @include flexbox();
+        // @include flex-direction(column);
         .am-tabs-default-bar-content{
+          // @include rect(100%, 100%);
           // @include flexbox();
           // @include flex-direction(column);
+          // @include justify-content();
           // @include flex();
           // @include rect(auto,auto);
-          @include rect(.594rem,auto);
-          // @include rect(.594rem, 5.5rem)
-          .am-tabs-tab-bar-wrap{
+          // @include rect(.594rem,auto);
+          @include rect(.594rem, 50%);
+          div.am-tabs-default-bar-tab{
             // @include rect(null, auto);
-            .m-tabs-0-0{
-              @include rect(.594rem, .3rem)
-            }
+            // @include flex();
+            // @include rect(.594rem, .3rem)
           }
           
           .am-tabs-default-bar-underline{
