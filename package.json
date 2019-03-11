@@ -129,5 +129,6 @@
         "http-proxy-middleware": "^0.19.1",
         "node-sass": "^4.11.0",
         "prop-types": "^15.7.2"
-    }
+    },
+    "homepage": "."
 }
