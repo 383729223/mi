@@ -39,10 +39,9 @@ class Com extends Component {
       this.setState({
         types:data
       })
-      // console.log(data)
       let newData=[];
-      let html=""
-      let newArr=[]
+      let newArr=[];
+      let firstHtml=[];
       data.forEach((item,index)=>{
 
         store.dispatch(action.requestTypeData('/mi/product/searchType?type='+item)).then(dat=>{
@@ -54,33 +53,21 @@ class Com extends Component {
 
           newArr.push(dat)
           
+          if(newArr.length===7){
+            let firstData=newArr.filter((ite,ind)=>{
+              return ite[0].type==="手机"
+            })
+            firstHtml=<div key={0}>
+              <Banner banner={this.state.bannerData} />
+              <Lists list={firstData[0]} />
+            </div>
+            this.setState({
+              html:firstHtml
+            })
+          }
         })
       })
-      
-      let timer2=setTimeout(()=>{
-        // console.log(newArr)
-        if(newArr[0][0].type==="手机"){
-          // console.log(1)
-          html=(<div key={0}>
-            <Banner banner={this.state.bannerData} />
-            <Lists list={newArr[0]} />
-          </div>)
-          this.setState({
-            html:html
-          })
-        }else{
-          // console.log(2)
-          html=(<div key={0}>
-            <Banner banner={this.state.bannerData} />
-            <Lists list={newArr[1]} />
-          </div>)
-          this.setState({
-            html:html
-          })
-        }
-        clearTimeout(timer2)
-      },700)
-      
+
       this.setState({
         tabHtml:newData
       })
@@ -96,18 +83,17 @@ class Com extends Component {
     
   }
 
-
   onTabClickFn(tab){
 
-      let html=''
+      let html=[]
       this.state.tabHtml.forEach((item,index)=>{
         // console.log(item)
         let itemKey=item.key*1
         if(tab.sub===itemKey){
-          html=(<div key={tab.sub}>
+          html=<div key={tab.sub}>
           <Banner banner={this.state.bannerData} />
           <Lists list={item.props.children[1].props.list} />
-        </div>)
+        </div>
         }
       })
       this.setState({
