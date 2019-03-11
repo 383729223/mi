@@ -53,7 +53,7 @@ class Com extends Component {
 
           newArr.push(dat)
           
-          if(newArr.length===7){
+          if(newArr.length===data.length){
             let firstData=newArr.filter((ite,ind)=>{
               return ite[0].type==="手机"
             })
