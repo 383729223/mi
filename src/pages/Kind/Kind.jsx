@@ -156,7 +156,6 @@ class Com extends Component {
             style={{ backgroundColor: '#F2F2F2' }}
             onLeftClick={this.goBack.bind(this)}
             rightContent={[
-              <Icon key="0" type="search" color="#999" size="md" style={{ marginRight: '16px' }} />
             ]}
           >分类</NavBar>
         </header>
