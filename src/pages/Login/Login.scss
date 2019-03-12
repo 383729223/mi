@@ -194,7 +194,7 @@
         @include rect(100%, 15%);
         @include flexbox();
         @include align-items(center);
-        // @include padding(.6rem 0 0  0);
+        @include padding(.1rem 0 0  0);
         .bottom_b{
           @include rect(100%, auto);
           ul{

@@ -46,11 +46,15 @@ div.cashContainer {
       .cashkind1 {
         transition: all 0.1s;
         @include rect(100%, 86%);
+        @include background-color(#fff);
         @include overflow();
         .am-list-item {
+          @include padding(0);
+          @include margin(0 15px 0 15px);
+          border-bottom: 1px solid rgba(0,0,0,.15);
           .am-list-line {
             @include padding(0 0 1px 0);
-            border-bottom: 1px solid #eee;
+            border-bottom: 0px solid #eee;
             .am-list-content {
               @include font-size(0.15rem);
             }
@@ -58,8 +62,9 @@ div.cashContainer {
               .am-checkbox-agree {
                 @include margin(0);
                 .am-checkbox {
-                  right: 10%;
+                  right: 0;
                   left: auto;
+                  width: 22px;
                   .am-checkbox-inner {
                     top: 0px;
                   }
@@ -100,10 +105,15 @@ div.cashContainer {
     .cashBill {
       @include rect(100%, auto);
       border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
+      // border-bottom: 1px solid #e0e0e0;
       .cashT {
+        @include background-color(#fff);
         .am-list-item {
+          @include padding(0);
+          @include margin(0 15px 0 15px);
+          border-bottom: 1px solid rgba(0,0,0,.15);
           .am-list-line {
+            @include padding(0);
             .am-list-content {
               @include font-size(0.13rem);
               // font-weight: bolder;
@@ -120,6 +130,9 @@ div.cashContainer {
             .am-accordion-header {
               @include font-size(0.13rem);
               // font-weight: bolder;
+              .arrow{
+                @include margin(0 5px 0 0);
+              }
             }
             .am-accordion-content {
               .am-accordion-content-box {
@@ -186,11 +199,14 @@ div.cashContainer {
       .cashB {
         .am-accordion-header {
           @include font-size(0.13rem);
+          .arrow{
+            @include margin(0 5px 0 0);
+          }
           .cashQ{
             .cashY{
               @include color(#bdbdbd);
               @include font-size(.10rem);
-              @include margin(0 5px 0 0);
+              @include margin(0 10px 0 0);
               float: right;
               em{
                 @include color(#f60);
@@ -238,10 +254,14 @@ div.cashContainer {
     }
     .cashGood{
       @include margin(0.1rem 0);
+      @include background-color(#fff);
       border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
+      // border-bottom: 1px solid #e0e0e0;
       .am-list-item{
         @include rect(auto, .6rem);
+        @include padding(0);
+        @include margin(0 5px 0 10px);
+        border-bottom: 1px solid rgba(0,0,0,.15);
         .am-list-thumb{
           img{
             @include rect(.33rem, .33rem)
@@ -268,6 +288,9 @@ div.cashContainer {
       p{
         @include font-size(.13rem);
         @include font-weight(bolder);
+        span{
+            @include color(#adadad);
+        }
       }
     }
     ul.listBox {
@@ -373,4 +396,13 @@ div.cashContainer {
       @include background-color(#ff5722);
     }
   }
+}
+.cashLine{
+  @include text-align(center);
+  @include rect(90%, 1px);
+  @include margin(0);
+  @include padding(0);
+  // @include background-color(#fff);
+  @include margin(0 auto);
+  border-bottom: 1px solid rgba(0,0,0,.15);
 }
