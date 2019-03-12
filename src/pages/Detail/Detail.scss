@@ -27,8 +27,12 @@
 
 .detailContent {
     @include overflow(auto);
+    @include flexbox();
+    @include flex-direction(column);
+    @include rect(100%, 100%);
     // position: relative;
     .detailBox {
+        @include overflow();
         @include flex();
         @include rect(100%, auto);
         @include flexbox();
@@ -69,10 +73,12 @@
         bottom: 0.2rem;
         left: 0;
         right: 0;
+        // position: fixed;
+        // bottom: 0.2rem;
         margin: 0 auto;
         @include overflow(hidden);
         @include border-radius(0.1rem);
-        @include rect(90%, 0.6rem);
+        @include rect(90%, auto);
         @include flexbox();
         @include justify-content(space-between);
         @include align-items();

@@ -55,6 +55,7 @@ div.cartContainer {
                 }
                 .listImg {
                     @include rect(auto, 100%);
+                    @include margin(0 0.1rem 0 0);
                     img {
                         @include rect(auto, 100%);
                     }
@@ -73,6 +74,7 @@ div.cartContainer {
                         // @include line-height(0.24rem)
                     }
                     em {
+                        @include margin(0 0 0.12rem 0);
                         @include flex(1);
                         @include rect(100%, auto);
                         @include ellipsis(90%, 1);
@@ -109,10 +111,12 @@ div.cartContainer {
             @include background-color(#fff);
             p {
                 @include text-color(#999);
+                @include margin(0.04rem 0 0 0);
             }
             span {
                 @include text-color(#FF6700);
                 @include font-size(0.3rem);
+                @include line-height(0.3rem);
                 @include font-weight();
                 i {
                     @include text-color(#999);

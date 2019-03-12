@@ -5,9 +5,9 @@
     @include align-items();
     @include flex-wrap(wrap);
     a.showlistItem {
-        @include margin(0.06rem);
+        @include margin(1% 1.5% 1% 1.5%);
         @include padding(0 0 0.1rem 0);
-        @include rect(46%, auto);
+        @include rect(47%, auto);
         @include flexbox();
         @include justify-content();
         @include align-items();
