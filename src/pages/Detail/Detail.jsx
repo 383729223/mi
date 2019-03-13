@@ -89,8 +89,6 @@ class Com extends Component {
         <Carousel
           autoplay={true}
           infinite
-          // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          // afterChange={index => console.log('slide to', index)}
         >
               {this.state.msg[0].imgsrcArr.map((val,index) => (
                 <a
