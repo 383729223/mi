@@ -53,20 +53,24 @@ class Com extends Component {
     if(this.state.username !== '登录/注册'){
       if(index === 0){
        let a= () => prompt(
-          '用户名',
-          '请输入新的用户名',
+          '请输入新的用户名','',
           [
             { text: '取消' },
             { text: '确认修改', onPress: value => new Promise((resolve) => {
-              Toast.info('修改成功', 1);
-              let timer = setTimeout(() => {
-                resolve();
-                this.setState({
-                  username: value
-                })
-                store.dispatch(action.editName(store.getState().loginStore.tel,value))
-                clearTimeout(timer)
-              }, 1000); })}
+              if(value.length <=0){
+                Toast.fail('用户名不能为空', 1);
+              } else {
+                Toast.success('修改成功', 1);
+                let timer = setTimeout(() => {
+                  resolve();
+                  this.setState({
+                    username: value
+                  })
+                  store.dispatch(action.editName(store.getState().loginStore.tel,value))
+                  clearTimeout(timer)
+                }, 1000); 
+              }
+              })}
           ],
           'default', this.state.username,
         )
@@ -76,19 +80,23 @@ class Com extends Component {
         })
       } else if (index === 1) {
         let a= () => prompt(
-            '密码',
-            '请输入新密码',
+            '请输入新密码','',
             [
               { text: '取消' },
               { text: '确认修改', onPress: password => new Promise((resolve) => {
-                Toast.info('修改成功,请重新登录', 1);
-                let timer = setTimeout(() => {
-                  resolve();
-                  
-                  store.dispatch(action.editPassword(store.getState().loginStore.tel, password))
-                  this.props.history.push('/registerapp/login')
-                  clearTimeout(timer)
-                }, 1000); })}
+                
+                if(password.length < 6){
+                  Toast.fail('至少输入六位', 1);
+                } else {
+                  Toast.success('修改成功，请重新登录', 1);
+                  let timer = setTimeout(() => {
+                    resolve();
+                    store.dispatch(action.editPassword(store.getState().loginStore.tel, password))
+                    this.props.history.push('/registerapp/login')
+                    clearTimeout(timer)
+                  }, 1000); 
+                }
+                })}
             ],
             'secure-text'
           )
