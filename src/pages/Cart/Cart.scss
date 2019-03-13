@@ -37,6 +37,26 @@ div.cartContainer {
             @include display(none);
         }
         ul.listBox {
+            .emptyCart {
+                @include rect(100%, auto);
+                @include flexbox();
+                @include justify-content();
+                @include align-items();
+                @include text-color(#999);
+                i {
+                    @include font-size(0.5rem);
+                    @include font-weight();
+                }
+                span {
+                    @include font-size(0.22rem);
+                    @include margin(0 0.04rem 0 0.04rem);
+                }
+                button {
+                    @include rect(auto, 60%);
+                    @include padding(0.02rem 0.04rem 0.02rem 0.04rem);
+                    @include text-color(#333);
+                }
+            }
             @include rect(100%, auto);
             @include flexbox();
             @include flex-direction(column);
@@ -96,7 +116,8 @@ div.cartContainer {
         }
     }
     footer.cartFooter {
-        @include rect(100%, 0.6rem);
+        @include box-shadow(0 -0.03rem 0.2rem #666);
+        @include rect(100%, 10%);
         @include flexbox();
         @include align-items();
         .cartFooterBox {
@@ -115,8 +136,8 @@ div.cartContainer {
             }
             span {
                 @include text-color(#FF6700);
-                @include font-size(0.3rem);
-                @include line-height(0.3rem);
+                @include font-size(0.28rem);
+                @include line-height(0.28rem);
                 @include font-weight();
                 i {
                     @include text-color(#999);

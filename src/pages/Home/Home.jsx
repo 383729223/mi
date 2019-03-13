@@ -112,7 +112,8 @@ class Com extends Component {
 
     let homeHtml=""
     if(this.state.html===""){
-      homeHtml=(<div style={{width:"100%",textAlign:"center",marginTop:"40px"}}><img src="http://www.sucaijishi.com/uploadfile/2014/0524/20140524124233131.gif" alt="" width="20%" height="auto"/></div>)
+      // homeHtml=(<div style={{width:"100%",textAlign:"center",marginTop:"40px"}}><img src="http://www.sucaijishi.com/uploadfile/2014/0524/20140524124233131.gif" alt="" width="20%" height="auto"/></div>)
+      homeHtml=(<div style={{width:"100%",textAlign:"center",marginTop:"40px"}}><img src="http://cdn.uedna.com/201402/139266266693_1140x0.gif" alt="" width="100%" height="auto"/></div>)
     }else{
       homeHtml=this.state.html
     }

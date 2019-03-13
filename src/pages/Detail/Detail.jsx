@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Api from '@/api/detail'
 import './Detail.scss'
-import { Carousel,Badge  } from 'antd-mobile';
+import { Carousel,Badge, Toast  } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import store from '@/store'
 import action from '@/store/cart/action'
@@ -44,7 +44,7 @@ class Com extends Component {
   }
 
   addCart(){
-    
+    Toast.success('加入购物车', 1)
     if(localStorage.getItem('buyCart')){
       let newArr=[];
       let id=this.props.match.params.id;
@@ -54,6 +54,8 @@ class Com extends Component {
       let data=this.state.msg;
       data[0]['buyCount']=1;
       data[0]['hasChecked']=true;
+      data[0]['hasDisable']=true;
+      data[0]['hasFlag']=true;
       data[0]['showImg']=this.state.showImg;
       
       let result = newArr.filter(item => {
@@ -72,6 +74,8 @@ class Com extends Component {
       let data=this.state.msg;
       data[0].buyCount=1;
       data[0].hasChecked=true;
+      data[0].hasDisable=true;
+      data[0].hasFlag=true;
       data[0].showImg=this.state.showImg;
       localStorage.setItem('buyCart',JSON.stringify(data));
     }
