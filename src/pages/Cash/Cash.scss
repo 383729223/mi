@@ -8,11 +8,13 @@ header.cashHeader {
   }
 }
 div.cashContainer {
+
   @include flex();
   @include rect(100%, auto);
   @include flexbox();
   @include align-items();
   @include flex-direction(column);
+  
   div.cashContent {
     @include overflow();
     @include flex();
@@ -55,6 +57,7 @@ div.cashContainer {
           .am-list-line {
             @include padding(0 0 1px 0);
             border-bottom: 0px solid #eee;
+            
             .am-list-content {
               @include font-size(0.15rem);
             }
@@ -78,6 +81,9 @@ div.cashContainer {
                 }
               }
             }
+          }
+          .am-list-line::after{
+            height: 0;
           }
         }
       }
@@ -111,7 +117,7 @@ div.cashContainer {
         .am-list-item {
           @include padding(0);
           @include margin(0 15px 0 15px);
-          // border-bottom: 1px solid rgba(0,0,0,.15);
+          border-bottom: 1px solid rgba(0,0,0,.15);
           .am-list-line {
             @include padding(0);
             .am-list-content {
@@ -123,15 +129,20 @@ div.cashContainer {
             }
           }
         }
+        
       }
       .cashM {
         .am-accordion {
           .am-accordion-item {
+            @include background-color(#fff);
             .am-accordion-header {
               @include font-size(0.13rem);
+              @include padding(0);
+              @include margin(0 16px 0 15px);
+              // border-bottom: 1px solid rgba(0,0,0,.15);
               // font-weight: bolder;
               .arrow{
-                @include margin(0 5px 0 0);
+                right: 1px;
               }
             }
             .am-accordion-content {
@@ -195,12 +206,16 @@ div.cashContainer {
             }
           }
         }
+          .am-accordion::before{
+            height:0;
+          }
       }
       .cashB {
         .am-accordion-header {
           @include font-size(0.13rem);
+          
           .arrow{
-            @include margin(0 5px 0 0);
+            @include margin(0 15px 0 0);
           }
           .cashQ{
             .cashY{
@@ -249,6 +264,9 @@ div.cashContainer {
             }
           }
         }
+        .am-accordion::before{
+          height:0;
+        }
       }
       
     }
@@ -273,11 +291,17 @@ div.cashContainer {
             @include font-size(.14rem)
           }
         }
+        .am-list-line::after{
+          height: 0;
+        }
         .am-list-extra{
           @include font-size(.14rem);
           @include color(#000);
           font-weight: bolder;
         }
+      }
+      .am-list-item:last-child{
+        border-bottom: 0px solid rgba(0,0,0,.15);
       }
     }
     .cashInfo{
