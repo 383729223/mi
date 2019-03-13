@@ -39,6 +39,8 @@
     .allOrders{
       border-bottom: 1px solid rgba(0,0,0,.15);
       .am-list{
+        .am-list-item{
+          min-height: 50px;
         .am-list-content{
           @include font-size(.15rem);
         }
@@ -51,6 +53,7 @@
           @include margin(0)
         }
       }
+      }
     }
     .userUl{
       @include padding(0 .4rem);
@@ -58,7 +61,7 @@
       @include flexbox();
       @include justify-content(space-between);
       li{
-        @include padding(.19rem 0);
+        @include padding(.15rem 0);
         a{
           @include flexbox();
           @include flex-direction(column);
@@ -66,14 +69,14 @@
           @include align-items(center);
           @include text-color(rgba(0,0,0,.87));
           div{
-            @include rect(.25rem, .25rem);
+            @include rect(.27rem, .27rem);
             img{
               @include rect(100%, .25rem)
             }
           }
           span{
             @include margin(.06rem 0 0 0);
-            @include font-size(.10rem)
+            @include font-size(.13rem)
           }
         }
       }
@@ -86,17 +89,74 @@
     }
     .userUl_1{
       @include background-color(#fff);
-      li{
+      li.ul_b{
         @include rect(100%, .55rem);
-        border-bottom: 1px solid rgba(0,0,0,.15);
+        // border-bottom: 1px solid rgba(0,0,0,.15);
         
         .am-list-item{
           @include rect(100%, .55rem);
-          .am-list-content{
-            @include font-size(.15rem)
+          .am-list-line{
+            border-bottom: 1px solid rgba(0,0,0,.15);
+            .am-list-content{
+              @include font-size(.15rem)
+            }
           }
         }
       }
+      li{
+        @include rect(100%, .55rem);
+        // border-bottom: 1px solid rgba(0,0,0,.15);
+        
+        .am-list-item{
+          @include rect(100%, .55rem);
+          .am-list-line{
+            .am-list-content{
+              @include font-size(.15rem)
+            }
+          }
+        }
+      }
+      
+      hr{
+        @include margin(0);
+        @include padding(0);
+        @include rect(90%, 1px);
+        @include background-color(rgba(0,0,0,.15));
+        position: relative;
+        left: 13%;
+      }
+    }
+    .userUl_2{
+      @include margin(0 0 3% 0);
+      @include background-color(#fff);
+      li.ul_b{
+        @include rect(100%, .55rem);
+        // border-bottom: 1px solid rgba(0,0,0,.15);
+        
+        .am-list-item{
+          @include rect(100%, .55rem);
+          .am-list-line{
+            border-bottom: 1px solid rgba(0,0,0,.15);
+            .am-list-content{
+              @include font-size(.15rem)
+            }
+          }
+        }
+      }
+      li{
+        @include rect(100%, .55rem);
+        // border-bottom: 1px solid rgba(0,0,0,.15);
+        
+        .am-list-item{
+          @include rect(100%, .55rem);
+          .am-list-line{
+            .am-list-content{
+              @include font-size(.15rem)
+            }
+          }
+        }
+      }
+      
       hr{
         @include margin(0);
         @include padding(0);

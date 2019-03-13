@@ -188,8 +188,8 @@
       }
       .bottom{
         // @include rect(100%, .2rem);
-        // @include margin(1.6rem 0 0  0);
-        @include rect(100%, 50%);
+        @include margin(.2rem 0 0  0);
+        @include rect(100%, 15%);
         @include flexbox();
         @include justify-content(center);
         @include align-items(center);
