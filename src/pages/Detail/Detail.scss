@@ -78,7 +78,8 @@
         margin: 0 auto;
         @include overflow(hidden);
         @include border-radius(0.1rem);
-        @include rect(90%, auto);
+        // @include rect(90%, auto);
+        @include rect(90%, 8%);
         @include flexbox();
         @include justify-content(space-between);
         @include align-items();
@@ -88,7 +89,8 @@
             @include align-items();
             a.detailCart {
                 @include margin(0 0.1rem 0 0.1rem);
-                @include rect(0.45rem, 0.6rem);
+                // @include rect(0.45rem, 0.6rem);
+                @include rect(0.45rem, 8%);
                 @include flexbox();
                 @include flex-direction(column);
                 @include align-items();
@@ -101,23 +103,29 @@
                 }
                 p {
                     @include text-align();
+                    @include font-size(0.12rem);
                 }
                 .sumCount {
                     position: absolute;
-                    top: 0;
-                    right: -4px;
+                    top: 1px;
+                    right: 2px;
                 }
             }
         }
         .addCart {
             @include margin(0 0.2rem 0 0);
             @include border-radius(0.2rem);
-            @include rect(40%, 0.4rem);
+            // @include rect(40%, 0.4rem);
+            @include rect(40%, 70%);
             @include text-color(#fff);
-            @include text-align();
-            @include line-height(0.4rem);
-            @include font-size(0.17rem);
+            // @include text-align();
+            // @include line-height(0.4rem);
+            // @include line-height(0.4rem);
+            @include font-size(0.16rem);
             @include background-color(#FF6700);
+            @include flexbox();
+            @include justify-content();
+            @include align-items();
         }
     }
 }

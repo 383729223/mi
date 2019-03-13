@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Checkbox, Stepper } from 'antd-mobile';
+import { Icon, Checkbox, Stepper,Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import './Cart.scss'
 import store from '@/store'
@@ -48,6 +48,7 @@ class Com extends Component {
   }
   // 删除列表按钮功能
   deleteList(id){
+    Toast.success('删除成功', 1)
     let newData=this.state.cartList.filter(item=>{
       return item.goodsId !== id
     })
@@ -60,21 +61,85 @@ class Com extends Component {
   }
   // 改变选中状态
   hasCheck=(id,value)=>{
-    this.state.cartList.forEach(item=>{
+    let newArr=this.state.cartList
+    newArr.forEach(item=>{
       if(item.goodsId===id){
         if(item.hasChecked !== value.target.checked){
+          this.setState({
+            listMsg:{"beforeId":item.goodsId,"beforeCount":item.buyCount}
+          })
           item.buyCount=0
+          item.hasDisable=value.target.checked
+          item.hasFlag=value.target.checked
+
         }else{
-          // ==========待优化=============
-          // if(id===this.state.listMsg.id){
-          //   item.buyCount=this.state.listMsg.value
-          // }
-          // ==========待优化=============
-          item.buyCount=1
+          if(id===this.state.listMsg.beforeId){
+              item.buyCount=this.state.listMsg.beforeCount
+          }
+          item.hasDisable=value.target.checked
+          item.hasFlag=value.target.checked
         }
       }
+
+      // 先判断ID后判断选中
+      // if(item.goodsId===id){
+      //   if(item.hasChecked !== value.target.checked){
+      //     this.setState({
+      //       listMsg:{"beforeId":item.goodsId,"beforeCount":item.buyCount}
+      //     })
+      //     item.buyCount=0
+      //     item.hasDisable=value.target.checked
+
+      //   }else{
+      //     if(id===this.state.listMsg.beforeId){
+      //         item.buyCount=this.state.listMsg.beforeCount
+      //     }
+      //     item.hasDisable=value.target.checked
+      //   }
+      // }else{
+      //   if(item.goodsId===id){
+      //     if(item.hasChecked !== value.target.checked){
+      //       this.setState({
+      //         listMsg:{"beforeId":item.goodsId,"beforeCount":item.buyCount}
+      //       })
+      //       item.buyCount=0
+      //       item.hasDisable=value.target.checked
+  
+      //     }else{
+      //       if(id===this.state.listMsg.beforeId){
+      //           item.buyCount=this.state.listMsg.beforeCount
+      //       }
+      //       item.hasDisable=value.target.checked
+      //     }
+      //   }
+      // }
+
+      // 先判断选中后判断ID
+      // if(item.hasChecked !== value.target.checked){
+      //   if(item.goodsId===id){
+      //     this.setState({
+      //       listMsg:{"beforeId":item.goodsId,"beforeCount":item.buyCount}
+      //     })
+      //     item.buyCount=0
+      //     item.hasDisable=value.target.checked
+      //   }else{
+
+      //   }
+
+
+      // }else{
+      //   if(id===this.state.listMsg.beforeId){
+      //       item.buyCount=this.state.listMsg.beforeCount
+      //   }
+      //   item.hasDisable=value.target.checked
+      // }
+
     })
-    localStorage.setItem('buyCart',JSON.stringify(this.state.cartList))
+      // console.log(newArr)
+    localStorage.setItem('buyCart',JSON.stringify(newArr))
+    this.setState({
+      cartList:newArr
+    })
     this.buyCountFn()
   }
   // 商品数量变化
@@ -103,17 +168,33 @@ class Com extends Component {
     }
   }
 
+  goHome(){
+    this.props.history.push('/home')
+  }
 
   render () {
     let cartListHtmlArr=[];
-    let arr=JSON.parse(localStorage.getItem('buyCart'))
-    if(arr==null){
-      cartListHtmlArr=<h3>请选购产品！</h3>
+    let cartListFooterHtmlArr=[];
+    // let arr=JSON.parse(localStorage.getItem('buyCart'))
+    let arr=this.state.cartList;
+    if(arr.length===0){
+      cartListHtmlArr=<div className="emptyCart">
+        <i className="iconfont icon-gouwuche201"></i><span>购物车还是空的</span><button onClick={this.goHome.bind(this)}>去逛逛</button>
+      </div>
+      cartListFooterHtmlArr=<div></div>
     }else{
+      cartListFooterHtmlArr.push(<footer key={0} className="cartFooter">
+            <div className="sum cartFooterBox">
+              <p>共{store.getState().cartStore.count}件&nbsp;金额：</p>
+              <span>{this.state.totlePrice}<i>元</i></span>
+            </div>
+            <Link to="/kind" className="keepOn cartFooterBox">继续购物</Link>
+            <div className="compute cartFooterBox" onClick={this.goBuy.bind(this)}>去结算</div>
+      </footer>)
       arr.map((item,index)=>{
         cartListHtmlArr.push(
           <li key={item.goodsId}>
-                  <CheckboxItem key={index} className="checkBtn" defaultChecked={item.hasChecked} onChange={this.hasCheck.bind(this,item.goodsId)}></CheckboxItem>
+                  <CheckboxItem key={item.goodsId} className="checkBtn" defaultChecked={item.hasFlag} onChange={this.hasCheck.bind(this,item.goodsId)}></CheckboxItem>
                   <div className="listImg"><img src={item.showImg} alt=""/></div>
                   <div className="listInfo">
                       <p>{item.title}</p>
@@ -121,6 +202,7 @@ class Com extends Component {
                       <div className="countBox"><Stepper
                         style={{ width: '50%', minWidth: '100px' }}
                         showNumber
+                        disabled={!item.hasDisable}
                         max={100}
                         min={1}
                         defaultValue={item.buyCount}
@@ -136,37 +218,14 @@ class Com extends Component {
     return (
       <div className = "cartContainer">
         <div className="content cartContent">
-            <Link to="/registerapp/login" className={this.state.hasLogin}>登录后享受更多优惠<span>去登陆<Icon type="right" /></span></Link>
+            <Link to="/registerapp/login" className={this.state.hasLogin}>登录后享受更多优惠<span>去登录<Icon type="right" /></span></Link>
             <ul className="listBox">
               { cartListHtmlArr }
-              {/* {this.state.cartList.map((item,index)=>(
-                <li key={item.goodsId}>
-                  <CheckboxItem key={index} className="checkBtn" defaultChecked={item.hasChecked} onChange={this.hasCheck.bind(this,item.goodsId)}></CheckboxItem>
-                  <div className="listImg"><img src={item.showImg} alt=""/></div>
-                  <div className="listInfo">
-                      <p>{item.title}</p>
-                      <em>售价：{item.attr.ram[0].text[1]}元</em>
-                      <div className="countBox"><Stepper
-                        style={{ width: '50%', minWidth: '100px' }}
-                        showNumber
-                        max={100}
-                        min={1}
-                        defaultValue={item.buyCount}
-                        onChange={this.changeCount.bind(this,item.goodsId)}
-                      /><div className="iconfont icon-lajitong" onClick={this.deleteList.bind(this,item.goodsId)}></div></div>
-                  </div>
-                </li>
-              ))} */}
+              
             </ul>
         </div>
-        <footer className="cartFooter">
-              <div className="sum cartFooterBox">
-                <p>共{store.getState().cartStore.count}件&nbsp;金额：</p>
-                <span>{this.state.totlePrice}<i>元</i></span>
-              </div>
-              <Link to="/kind" className="keepOn cartFooterBox">继续购物</Link>
-              <div className="compute cartFooterBox" onClick={this.goBuy.bind(this)}>去结算</div>
-        </footer>
+        
+        { cartListFooterHtmlArr }
       </div>
     )
   }
