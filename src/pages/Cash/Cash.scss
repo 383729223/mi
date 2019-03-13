@@ -9,15 +9,6 @@ header.cashHeader {
 }
 
 div.cashContainer {
-  @include flex();
-  @include rect(100%, auto);
-  @include flexbox();
-  @include align-items();
-  @include flex-direction(column);
-  
-  div.cashContent {
-    @include overflow();
-
     @include flex();
     @include rect(100%, auto);
     @include flexbox();
@@ -25,44 +16,24 @@ div.cashContainer {
     @include flex-direction(column);
     div.cashContent {
         @include overflow();
-
-        .am-list-item {
-          @include padding(0);
-          @include margin(0 15px 0 15px);
-          border-bottom: 1px solid rgba(0,0,0,.15);
-          .am-list-line {
-            @include padding(0 0 1px 0);
-            border-bottom: 0px solid #eee;
-            
-            .am-list-content {
-              @include font-size(0.15rem);
-            }
-            .am-list-extra {
-              .am-checkbox-agree {
-                @include margin(0);
-                .am-checkbox {
-                  right: 0;
-                  left: auto;
-                  width: 22px;
-                  .am-checkbox-inner {
-                    top: 0px;
-                  }
-                }
-                .am-checkbox-checked {
-                  .am-checkbox-inner {
-                    top: 0px;
-                    border-color: #ff5722;
-                    background: #ff5722;
-                  }
-
+        @include flex();
+        @include rect(100%, auto);
+        // @include flexbox();
+        // @include flex-direction(column);
+        // @include justify-content(space-between);
+        .cashArea {
+            // border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            .am-list-item {
+                @include rect(100%, 0.51rem);
+                background: #fff url("https://s1.mi.com/m/images/m/bd1.png") 0 0 repeat-x;
+                background-size: 0.52rem 0.03rem;
+                .am-list-line {
+                    .am-list-content {
+                        @include font-size(0.15rem);
+                    }
                 }
             }
-
-          }
-          .am-list-line::after{
-            height: 0;
-          }
-
         }
         .cashKind {
             @include margin(0.1rem 0);
@@ -73,27 +44,47 @@ div.cashContainer {
             div.icon-arrow-down {
                 transform: rotate(360deg);
             }
-
-          }
-        }
-      }
-    }
-    .cashBill {
-      @include rect(100%, auto);
-      border-top: 1px solid #e0e0e0;
-      // border-bottom: 1px solid #e0e0e0;
-      .cashT {
-        @include background-color(#fff);
-        .am-list-item {
-          @include padding(0);
-          @include margin(0 15px 0 15px);
-          border-bottom: 1px solid rgba(0,0,0,.15);
-          .am-list-line {
-            @include padding(0);
-            .am-list-content {
-              @include font-size(0.13rem);
-              // font-weight: bolder;
-
+            .cashkind1 {
+                transition: all 0.1s;
+                @include rect(100%,
+                86%);
+                @include background-color(#fff);
+                @include overflow();
+                .am-list-item {
+                    @include padding(0);
+                    @include margin(0 15px 0 15px);
+                    border-bottom: 1px solid rgba(0, 0, 0, .15);
+                    .am-list-line {
+                        @include padding(0 0 1px 0);
+                        border-bottom: 0px solid #eee;
+                        .am-list-content {
+                            @include font-size(0.15rem);
+                        }
+                        .am-list-extra {
+                            .am-checkbox-agree {
+                                @include margin(0);
+                                .am-checkbox {
+                                    right: 0;
+                                    left: auto;
+                                    width: 22px;
+                                    .am-checkbox-inner {
+                                        top: 0px;
+                                    }
+                                }
+                                .am-checkbox-checked {
+                                    .am-checkbox-inner {
+                                        top: 0px;
+                                        border-color: #ff5722;
+                                        background: #ff5722;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .am-list-line::after {
+                        height: 0;
+                    }
+                }
             }
             .cashelse {
                 .am-list-line {
@@ -117,30 +108,19 @@ div.cashContainer {
                 }
             }
         }
-        
-      }
-      .cashM {
-        .am-accordion {
-          .am-accordion-item {
-            @include background-color(#fff);
-            .am-accordion-header {
-              @include font-size(0.13rem);
-              @include padding(0);
-              @include margin(0 16px 0 15px);
-              // border-bottom: 1px solid rgba(0,0,0,.15);
-              // font-weight: bolder;
-              .arrow{
-                right: 1px;
-              }
-            }
-            .am-accordion-content {
-              .am-accordion-content-box {
-                .am-list {
-                  .am-list-body {
-                    .am-list-item {
-                      @include background-color(#f5f5f5);
-                      .am-list-line {
-
+        .cashBill {
+            @include rect(100%,
+            auto);
+            border-top: 1px solid #e0e0e0;
+            // border-bottom: 1px solid #e0e0e0;
+            .cashT {
+                @include background-color(#fff);
+                .am-list-item {
+                    @include padding(0);
+                    @include margin(0 15px 0 15px);
+                    border-bottom: 1px solid rgba(0, 0, 0, .15);
+                    .am-list-line {
+                        @include padding(0);
                         .am-list-content {
                             @include font-size(0.13rem);
                             // font-weight: bolder;
@@ -154,11 +134,15 @@ div.cashContainer {
             .cashM {
                 .am-accordion {
                     .am-accordion-item {
+                        @include background-color(#fff);
                         .am-accordion-header {
                             @include font-size(0.13rem);
+                            @include padding(0);
+                            @include margin(0 16px 0 15px);
+                            // border-bottom: 1px solid rgba(0,0,0,.15);
                             // font-weight: bolder;
                             .arrow {
-                                @include margin(0 5px 0 0);
+                                right: 1px;
                             }
                         }
                         .am-accordion-content {
@@ -222,12 +206,15 @@ div.cashContainer {
                         }
                     }
                 }
+                .am-accordion::before {
+                    height: 0;
+                }
             }
             .cashB {
                 .am-accordion-header {
                     @include font-size(0.13rem);
                     .arrow {
-                        @include margin(0 5px 0 0);
+                        @include margin(0 15px 0 0);
                     }
                     .cashQ {
                         .cashY {
@@ -276,31 +263,45 @@ div.cashContainer {
                         }
                     }
                 }
+                .am-accordion::before {
+                    height: 0;
+                }
             }
         }
-
-          .am-accordion::before{
-            height:0;
-          }
-      }
-      .cashB {
-        .am-accordion-header {
-          @include font-size(0.13rem);
-          
-          .arrow{
-            @include margin(0 15px 0 0);
-          }
-          .cashQ{
-            .cashY{
-              @include color(#bdbdbd);
-              @include font-size(.10rem);
-              @include margin(0 10px 0 0);
-              float: right;
-              em{
-                @include color(#f60);
-                @include font-size(.10rem);
-              }
-
+        .cashGood {
+            @include margin(0.1rem 0);
+            @include background-color(#fff);
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            .am-list-item {
+                @include rect(auto,
+                .6rem);
+                @include padding(0);
+                @include margin(0 5px 0 10px);
+                border-bottom: 1px solid rgba(0, 0, 0, .15);
+                .am-list-thumb {
+                    img {
+                        @include rect(.33rem,
+                        .33rem)
+                    }
+                }
+                .am-list-line {
+                    border-bottom: none;
+                    .am-list-content {
+                        @include font-size(.14rem)
+                    }
+                }
+                .am-list-line::after {
+                    height: 0;
+                }
+                .am-list-extra {
+                    @include font-size(.14rem);
+                    @include color(#000);
+                    font-weight: bolder;
+                }
+            }
+            .am-list-item:last-child {
+                border-bottom: 0px solid rgba(0, 0, 0, .15);
             }
         }
         .cashInfo {
@@ -316,65 +317,78 @@ div.cashContainer {
                     @include color(#adadad);
                 }
             }
-          }
         }
-        .am-accordion::before{
-          height:0;
-        }
-      }
-      
-    }
-    .cashGood{
-      @include margin(0.1rem 0);
-      @include background-color(#fff);
-      border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-      .am-list-item{
-        @include rect(auto, .6rem);
-        @include padding(0);
-        @include margin(0 5px 0 10px);
-        border-bottom: 1px solid rgba(0,0,0,.15);
-        .am-list-thumb{
-          img{
-            @include rect(.33rem, .33rem)
-          }
-        }
-        .am-list-line{
-          border-bottom: none;
-          .am-list-content{
-            @include font-size(.14rem)
-          }
-        }
-        .am-list-line::after{
-          height: 0;
-        }
-        .am-list-extra{
-          @include font-size(.14rem);
-          @include color(#000);
-          font-weight: bolder;
-        }
-      }
-      .am-list-item:last-child{
-        border-bottom: 0px solid rgba(0,0,0,.15);
-      }
-    }
-    .cashInfo{
-      @include background-color(#fff);
-      @include padding(.1rem .1rem .1rem .15rem);
-      @include margin(.1rem 0);
-      border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-      p{
-        @include font-size(.13rem);
-        @include font-weight(bolder);
-        span{
-            @include color(#adadad);
-
+        ul.listBox {
+            @include rect(100%,
+            auto);
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items();
+            @include justify-content(flex-start);
+            li {
+                @include padding(0.04rem 0 0.04rem 0);
+                @include background-color(#fff);
+                @include rect(100%,
+                1rem);
+                @include flexbox();
+                @include justify-content();
+                @include align-items();
+                .checkBtn {
+                    @include background-color(#fff);
+                    @include rect(0.5rem,
+                    100%);
+                }
+                .listImg {
+                    @include rect(auto,
+                    100%);
+                    img {
+                        @include rect(auto,
+                        100%);
+                    }
+                }
+                .listInfo {
+                    @include flex();
+                    @include rect(auto,
+                    100%);
+                    @include flexbox();
+                    @include flex-direction(column);
+                    p {
+                        @include flex(2);
+                        @include rect(100%,
+                        auto);
+                        @include ellipsis(80%,
+                        2);
+                        @include text-color(#333);
+                        @include font-size(0.14rem);
+                        // @include line-height(0.24rem)
+                    }
+                    em {
+                        @include flex(1);
+                        @include rect(100%,
+                        auto);
+                        @include ellipsis(90%,
+                        1);
+                        @include text-color(#666);
+                    }
+                    .countBox {
+                        @include flex(1);
+                        @include rect(100%,
+                        auto);
+                        @include flexbox();
+                        @include justify-content(space-between);
+                        @include align-items();
+                        .icon-lajitong {
+                            @include font-size(0.24rem);
+                            @include margin(0 0.08rem 0 0);
+                        }
+                    }
+                }
+            }
         }
     }
     footer.cashFooter {
         @include rect(100%,
-        10%);
+        0.6rem);
         @include flexbox();
         @include align-items();
         .cashFooterBox {
