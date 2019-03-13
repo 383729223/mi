@@ -91,10 +91,10 @@ div.cartContainer {
                         @include ellipsis(80%, 2);
                         @include text-color(#333);
                         @include font-size(0.14rem);
-                        // @include line-height(0.24rem)
+                        @include line-height(0.24rem)
                     }
                     em {
-                        @include margin(0 0 0.12rem 0);
+                        // @include margin(0 0 0.12rem 0);
                         @include flex(1);
                         @include rect(100%, auto);
                         @include ellipsis(90%, 1);
