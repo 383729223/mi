@@ -16,14 +16,14 @@ class App extends Component {
         this.goHome=this.goHome.bind(this)
     }
     componentDidMount(){
-        this.buyCountFn();
         if(localStorage.getItem("hasFirst")){
+            this.buyCountFn();
         }else{
             localStorage.setItem("hasFirst","1")
             let timer=setTimeout(()=>{
                 this.goHome()
                 clearTimeout(timer)
-            },2700)
+            },2600)
         }
     }
     buyCountFn(){
