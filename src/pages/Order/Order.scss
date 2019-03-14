@@ -1,0 +1,197 @@
+@import '@/qunar/reset.scss';
+header.orderHeader {
+    @include rect(100%, 0.48rem);
+    @include background-color(#F2F2F2);
+    .am-navbar-title {
+        @include text-color(#666);
+        @include font-size(0.17rem);
+    }
+}
+
+div.orderContainer {
+    @include flex();
+    @include rect(100%, auto);
+    @include flexbox();
+    @include align-items();
+    @include flex-direction(column);
+    div.orderContent {
+        @include overflow();
+        @include flex();
+        @include rect(100%, auto);
+        .isLogin {
+            @include background-color(#fff);
+            @include text-color(#333);
+            @include flexbox();
+            @include justify-content(space-between);
+            @include align-items();
+            @include rect(100%, 0.5rem);
+            @include line-height(0.5rem);
+            @include padding(0 0.15rem 0 0.15rem);
+            span {
+                @include text-color(#666);
+                @include flexbox();
+                @include align-items();
+            }
+        }
+        .noLogin {
+            @include display(none);
+        }
+        ul.listBox {
+            .emptyCart {
+                @include rect(100%, auto);
+                @include flexbox();
+                @include justify-content();
+                @include align-items();
+                @include text-color(#999);
+                i {
+                    @include font-size(0.5rem);
+                    @include font-weight();
+                }
+                span {
+                    @include font-size(0.22rem);
+                    @include margin(0 0.04rem 0 0.04rem);
+                }
+                button {
+                    @include rect(auto, 60%);
+                    @include padding(0.02rem 0.04rem 0.02rem 0.04rem);
+                    @include text-color(#333);
+                }
+            }
+            @include rect(100%, auto);
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items();
+            @include justify-content(flex-start);
+            li {
+                @include padding(0.04rem 0 0.04rem 0);
+                @include background-color(#fff);
+                @include rect(100%, 1rem);
+                @include flexbox();
+               
+                // @include justify-content();
+                @include align-items();
+                    .am-list-item {
+                        @include margin(0 0 0 .3rem);
+                        @include rect(70%,.6rem);
+                        @include padding(0);
+                        // @include margin(0 5px 0 10px);
+                        border-bottom: 1px solid rgba(0, 0, 0, .15);
+                        .am-list-thumb {
+                            img {
+                                @include rect(.55rem,
+                                .55rem)
+                            }
+                        }
+                        .am-list-line {
+                            @include rect(80%, auto);
+                            border-bottom: none;
+                            .am-list-content {
+                                @include font-size(.14rem);
+                                @include rect(100%, auto);                                @include flexbox();
+                                @include justify-content(space-between);
+                                overflow: unset;
+                                text-overflow: unset;
+                                white-space: nowrap;
+                                // @include ellipsis(100%, 1);
+                            }
+                        }
+                        .am-list-line::after {
+                            height: 0;
+                        }
+                        .am-list-extra {
+                            @include font-size(.14rem);
+                            @include color(#000);
+                            font-weight: bolder;
+                        }
+                    }
+                    .am-list-item:last-child {
+                        border-bottom: 0px solid rgba(0, 0, 0, .15);
+                    }
+                .checkBtn {
+                    @include background-color(#fff);
+                    @include rect(0.5rem, 100%);
+                }
+                .listImg {
+                    @include rect(auto, 100%);
+                    @include margin(0 0.1rem 0 0);
+                    img {
+                        @include rect(auto, 100%);
+                    }
+                }
+                .listInfo {
+                    @include flex();
+                    @include rect(auto, 100%);
+                    @include flexbox();
+                    @include flex-direction(column);
+                    p {
+                        @include flex(2);
+                        @include rect(100%, auto);
+                        // @include ellipsis(80%, 2);
+                        @include text-color(#333);
+                        @include font-size(0.14rem);
+                        @include line-height(0.24rem)
+                    }
+                    em {
+                        // @include margin(0 0 0.12rem 0);
+                        @include flex(1);
+                        @include rect(100%, auto);
+                        // @include ellipsis(90%, 1);
+                        @include text-color(#666);
+                    }
+                    .countBox {
+                        @include flex(1);
+                        @include rect(100%, auto);
+                        @include flexbox();
+                        @include justify-content(space-between);
+                        @include align-items();
+                        .icon-lajitong {
+                            @include font-size(0.24rem);
+                            @include margin(0 0.08rem 0 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer.orderFooter {
+        @include box-shadow(0 -0.03rem 0.2rem #666);
+        @include rect(100%, 10%);
+        @include flexbox();
+        @include align-items();
+        .orderFooterBox {
+            @include flex();
+            @include rect(auto, 100%);
+            @include flexbox();
+            @include align-items();
+            @include justify-content();
+            @include flex-direction(column);
+        }
+        div.sum {
+            @include background-color(#fff);
+            p {
+                @include text-color(#999);
+                @include margin(0.04rem 0 0 0);
+            }
+            span {
+                @include text-color(#FF6700);
+                @include font-size(0.28rem);
+                @include line-height(0.28rem);
+                @include font-weight();
+                i {
+                    @include text-color(#999);
+                    @include font-size(0.16rem);
+                    @include font-weight(400);
+                }
+            }
+        }
+        a.keepOn {
+            @include font-size(0.2rem);
+            @include text-color(#666);
+        }
+        div.compute {
+            @include text-color(#fff);
+            @include font-size(0.2rem);
+            @include background-color(#FF6700);
+        }
+    }
+}

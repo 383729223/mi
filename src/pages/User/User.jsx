@@ -131,7 +131,7 @@ class Com extends Component {
         <div className="content userContent">
           <div className='allOrders'>
             <List>
-              <Item extra="全部订单" arrow="horizontal" onClick={() => {}}>我的订单</Item>
+              <Item extra="全部订单" arrow="horizontal" onClick={() => {this.props.history.push('/orderapp/order')}}>我的订单</Item>
             </List>
           </div>
           <ul className='userUl'>
