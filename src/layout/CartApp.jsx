@@ -10,18 +10,19 @@ class App extends Component {
     render(){
         return (
             <div className="app">
-                
-                <header className="cartHeader">
-                    <NavBar
-                        mode="light"
-                        icon={<Icon type="left" size="lg" color="#999" />}
-                        style={{ backgroundColor: '#F2F2F2' }}
-                        onLeftClick={this.goBack.bind(this)}
-                        rightContent={[
-                        ]}
-                    >购物车</NavBar>
-                </header>
-                <Route path='/cartapp/cart' component={ Cart } />
+                <div className="contentBox">
+                    <header className="cartHeader">
+                        <NavBar
+                            mode="light"
+                            icon={<Icon type="left" size="lg" color="#999" />}
+                            style={{ backgroundColor: '#F2F2F2' }}
+                            onLeftClick={this.goBack.bind(this)}
+                            rightContent={[
+                            ]}
+                        >购物车</NavBar>
+                    </header>
+                    <Route path='/cartapp/cart' component={ Cart } />
+                </div>
             </div>
         )
     }

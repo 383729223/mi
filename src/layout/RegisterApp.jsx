@@ -10,13 +10,15 @@ class App extends Component {
     render(){
         return (
             <div className="app">
-                {/* <header className="header">注册登录结构头部</header> */}
-                <Switch>
-                    <Route path='/registerapp/search' component={ Search } />
-                    <Route path='/registerapp/register' component={ Register } />
-                    <Route path='/registerapp/login1' component={ Login1 } />
-                    <Route path='/registerapp/login' component={ Login } />
-                </Switch>
+                <div className="contentBox">
+                    {/* <header className="header">注册登录结构头部</header> */}
+                    <Switch>
+                        <Route path='/registerapp/search' component={ Search } />
+                        <Route path='/registerapp/register' component={ Register } />
+                        <Route path='/registerapp/login1' component={ Login1 } />
+                        <Route path='/registerapp/login' component={ Login } />
+                    </Switch>
+                </div>
             </div>
         )
     }

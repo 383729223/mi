@@ -18,7 +18,7 @@ class Com extends Component {
   }
   componentDidMount(){
     this.setState({
-      cartList:JSON.parse(localStorage.getItem('buyCart'))
+      cartList:JSON.parse(localStorage.getItem('buyCart'))|| []
     })
     
     if(store.getState().loginStore.tel===""){
