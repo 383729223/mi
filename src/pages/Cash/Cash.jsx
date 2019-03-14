@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Api from '@/api/detail'
 import './Cash.scss'
-import { List, Checkbox, Button, Accordion } from 'antd-mobile';
+import { List, Checkbox, Button, Accordion, Toast } from 'antd-mobile';
 // import { Link } from 'react-router-dom';
 // import store from '@/store'
 // import action from '@/store/cart/action'
@@ -235,7 +235,7 @@ class Com extends Component {
                 <p>共&nbsp;{count}件&nbsp;合计：</p>
                 <span><i>{price}元</i></span>
               </div>
-              <div className="compute cashFooterBox">去付款</div>
+              <div className="compute cashFooterBox" onClick={() => {Toast.info('开发中', 1)}}>去付款</div>
         </footer>
       </div>
 
