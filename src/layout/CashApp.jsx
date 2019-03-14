@@ -10,18 +10,19 @@ class App extends Component {
     render(){
         return (
             <div className="app">
-                
-                <header className="cashHeader">
-                    <NavBar
-                        mode="light"
-                        icon={<Icon type="left" size="lg" color="#999" />}
-                        style={{ backgroundColor: '#F2F2F2' }}
-                        onLeftClick={this.goBack.bind(this)}
-                        rightContent={[
-                        ]}
-                    >用户结算</NavBar>
-                </header>
-                <Route path='/cashapp/cash' component={ Cash } />
+                <div className="contentBox">
+                    <header className="cashHeader">
+                        <NavBar
+                            mode="light"
+                            icon={<Icon type="left" size="lg" color="#999" />}
+                            style={{ backgroundColor: '#F2F2F2' }}
+                            onLeftClick={this.goBack.bind(this)}
+                            rightContent={[
+                            ]}
+                        >用户结算</NavBar>
+                    </header>
+                    <Route path='/cashapp/cash' component={ Cash } />
+                </div>
             </div>
         )
     }

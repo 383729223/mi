@@ -2,58 +2,71 @@
 html,
 body,
 #root,
-.app {
+.app,
+.contentBox {
     @include rect(100%, 100%);
     touch-action: none;
 }
 
 .app {
-    @include flexbox();
-    @include flex-direction(column);
-    .container {
-        @include flex();
-        @include rect(100%, auto);
-        @include overflow();
-        .header {
-            @include rect(100%, 0.48rem);
-            @include background-color(#F2F2F2);
-        }
-        .content {
-            @include flex();
-            @include rect(100%, auto);
-            @include background-color(#F5F5F5);
-            @include flexbox();
-            @include flex-direction(column);
+    .showPage {
+        @include rect(100%, 100%);
+        @include background-color(#F87300);
+        @include justify-content();
+        @include align-items();
+        // @include transition(1s);
+        img {
+            @include rect(1rem, 1rem);
         }
     }
-    .footer {
-        @include rect(100%, 0.55rem);
-        @include background-color(#fff);
-        @include color(#666);
-        ul {
-            @include rect(100%, 100%);
-            @include flexbox();
-            a {
+    .contentBox {
+        @include flexbox();
+        @include flex-direction(column);
+        .container {
+            @include flex();
+            @include rect(100%, auto);
+            @include overflow();
+            .header {
+                @include rect(100%, 0.48rem);
+                @include background-color(#F2F2F2);
+            }
+            .content {
                 @include flex();
+                @include rect(100%, auto);
+                @include background-color(#F5F5F5);
                 @include flexbox();
                 @include flex-direction(column);
-                @include justify-content();
-                @include align-items();
-                @include text-color(#999);
-                @include font-size(.14rem);
-                &.active {
-                    @include color(#F56C02);
-                }
-                span:nth-child(1) {
-                    @include font-size(.24rem);
-                }
             }
-            a.cart {
-                position: relative;
-                .sumCount {
-                    position: absolute;
-                    top: -6px;
-                    right: 10px;
+        }
+        .footer {
+            @include rect(100%, 0.55rem);
+            @include background-color(#fff);
+            @include color(#666);
+            ul {
+                @include rect(100%, 100%);
+                @include flexbox();
+                a {
+                    @include flex();
+                    @include flexbox();
+                    @include flex-direction(column);
+                    @include justify-content();
+                    @include align-items();
+                    @include text-color(#999);
+                    @include font-size(.14rem);
+                    &.active {
+                        @include color(#F56C02);
+                    }
+                    span:nth-child(1) {
+                        @include font-size(.24rem);
+                    }
+                }
+                a.cart {
+                    position: relative;
+                    .sumCount {
+                        position: absolute;
+                        top: -6px;
+                        right: 10px;
+                    }
                 }
             }
         }
