@@ -1,6 +1,7 @@
-let baseUrl = '/mi'
+// let baseUrl = '/mi'
+let baseUrl = 'https://www.xingwl.cn/api'
 
 // process.env.NODE_ENV === 'development' ? baseUrl = '/daxun' : baseUrl = 'https://www.daxunxun.com'
-process.env.NODE_ENV === 'development' ? baseUrl = '/mi' : baseUrl = 'http://39.98.41.185/api'
+// process.env.NODE_ENV === 'development' ? baseUrl = '/mi' : baseUrl = 'https://www.xingwl.cn/api'
 
 export default baseUrl
